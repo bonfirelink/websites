@@ -7,7 +7,7 @@ body {
   margin:0;
   height: 100%;
   font-weight: 500;
-  font-family: 'HelveticaNeue';
+  font-family: 'HelveticaNeue', sans-serif;
   font-size: 1.3vw;
   color: white;
 }
