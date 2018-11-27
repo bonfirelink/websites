@@ -2,13 +2,16 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: calc(0.5em + 1vw);
+}
+
 html,
 body {
   margin:0;
   height: 100%;
   font-weight: 500;
   font-family: 'HelveticaNeue', sans-serif;
-  font-size: 1.3vw;
   color: white;
 }
 
@@ -23,12 +26,12 @@ section {
 
 h1 {
   font-family: 'Do Hyeon', sans-serif;
-  font-size: 10vw;
+  font-size: 5.5rem;
   font-weight: 300;
 }
 
 h2 {
-  font-size: 2vw;
+  font-size: 1.5rem;
 }
 
 a {
@@ -106,6 +109,13 @@ section {
 .content {
   display: flex;
   align-items: center;
+  flex: 1;
+}
+
+@media (max-width: 800px) {
+  .content {
+    display: block;
+  }
 }
 
 .content .column {
@@ -145,4 +155,10 @@ section.fullscreen-bg {
 #intro-abstract {
   margin-top: 4vh;
   width: 40%;
+}
+
+@media (max-width: 800px) {
+  #intro-abstract {
+    width: 100%;
+  }
 }
