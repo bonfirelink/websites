@@ -155,6 +155,8 @@ section.fullscreen-bg {
 #intro-abstract {
   margin-top: 4vh;
   width: 40%;
+  mix-blend-mode: difference;
+  color: #fff;
 }
 
 @media (max-width: 800px) {
