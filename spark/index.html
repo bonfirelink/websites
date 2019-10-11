@@ -17,7 +17,7 @@
     src="https://images.unsplash.com/photo-1528243097678-739049bbf2e7?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;w=1200">
   <img
     src="https://images.unsplash.com/photo-1545128485-c400e7702796?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;w=1200">
-  <form action="/spark/commit">
+  <form action="/spark/commit" id="#commit" style="display: block;">
     <p>How much do you like this idea?</p>
     <div>
       <input type="range" />
@@ -29,6 +29,22 @@
     <input type="hidden" name="amount" value="100" />
     <input type="submit" value="Next">
   </form>
+
+  <script>
+    let params, participated = false;
+    try {
+      params = new URLSearchParams(window.location.search);
+      participated = params.get('participated') === '1';
+    } catch(error) { }
+
+    if (participated) {
+      console.log('participated')
+      const commitFormElment = document.querySelector('#commit');
+      if (commitFormElment !== null) {
+        commitFormElment.style.display = 'none';
+      }
+    }
+  </script>
 </body>
 
 </html>

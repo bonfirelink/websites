@@ -9,54 +9,82 @@
 </head>
 
 <body>
-    <p class="error" style="display: none;">&nbsp;</div>
+    <p class="error" style="display: none;">&nbsp;</p>
 
-        <div class="commitment commitment-high" style="display: none;">
-            <p>That is great! How would you participate with this idea?</p>
-
-        </div>
-
-        <div class="commitment commitment-low" style="display: none;">
-            <p>Thank you for your feedback.</p>
-            <p>How could this idea be approved?</p>
-            <form action="/spark/state">
-                <textarea name="alternative-suggestion" id="alternative-suggestion" cols="30" rows="10"></textarea>
+    <div class="commitment commitment-high" style="display: none;">
+        <p>That is great! How would you contribute to this cause?</p>
+        <form action="/spark/state">
+            <div>
+                <p>Make a donation:</p>
+                <input type="radio" id="donate-none" name="donation" value="0" checked>
+                <label for="donate-none">No donation</label>
+                <input type="radio" id="donate-some" name="donation" value="10">
+                <label for="donate-some">10 CHF</label>
+                <input type="radio" id="donate-lots" name="donation" value="20">
+                <label for="donate-lots">30 CHF</label>
+                <input type="radio" id="donate-huge" name="donation" value="50">
+                <label for="donate-huge">50 CHF</label>
+            </div>
+            <div>
+                <p>Fill a role:</p>
+                <input type="radio" id="role-none" name="role" value="0" checked>
+                <label for="role-none">No role</label>
+                <input type="radio" id="organizer" name="role" value="0">
+                <label for="organizer">Organizer</label>
+                <input type="radio" id="cook" name="role" value="10">
+                <label for="cook">Cook</label>
+                <input type="radio" id="barkeeper" name="role" value="20">
+                <label for="barkeeper">Barkeeper</label>
+                <input type="radio" id="helper" name="role" value="50">
+                <label for="helper">Helper</label>
+            </div>
+            <div>
                 <input type="submit" value="Next">
-            </form>
-        </div>
-        <script>
-            let params, amount;
+            </div>
+        </form>
+    </div>
 
-            try {
-                params = new URLSearchParams(window.location.search);
-                amount = parseInt(params.get("amount"));
-                console.log(amount);
+    <div class="commitment commitment-low" style="display: none;">
+        <p>Thank you for your feedback.</p>
+        <p>How could this idea be approved?</p>
+        <form action="/spark/state">
+            <textarea name="alternative-suggestion" id="alternative-suggestion" cols="30" rows="10"></textarea>
+            <input type="submit" value="Next">
+        </form>
+    </div>
+    <script>
+        let params, amount;
 
-                if (!amount && amount !== 0) {
-                    throw new Error('Amount not defined.');
-                }
+        try {
+            params = new URLSearchParams(window.location.search);
+            amount = parseInt(params.get("amount"));
+            console.log(amount);
 
-                if (amount >= 50 && amount <= 100) {
-                    let commitmentHighElement = document.querySelector('.commitment-high');
-                    if (commitmentHighElement !== null) {
-                        commitmentHighElement.style.display = 'block';
-                    }
-                } else if (amount > 0 && amount < 50) {
-                    let commitmentLowWlement = document.querySelector('.commitment-low');
-                    if (commitmentLowWlement !== null) {
-                        commitmentLowWlement.style.display = 'block';
-                    }
-                } else {
-                    throw new Error('Amount not within range.');
-                }
-            } catch (error) {
-                let errorElement = document.querySelector('.error');
-                if (errorElement !== null) {
-                    errorElement.textContent = error.message;
-                    errorElement.style.display = "block";
-                }
+            if (!amount && amount !== 0) {
+                throw new Error('Amount not defined.');
             }
-        </script>
+
+            if (amount >= 50 && amount <= 100) {
+                let commitmentHighElement = document.querySelector('.commitment-high');
+                if (commitmentHighElement !== null) {
+                    commitmentHighElement.style.display = 'block';
+                }
+            } else if (amount > 0 && amount < 50) {
+                let commitmentLowWlement = document.querySelector('.commitment-low');
+                if (commitmentLowWlement !== null) {
+                    commitmentLowWlement.style.display = 'block';
+                }
+            } else {
+                throw new Error('Amount not within range.');
+            }
+        } catch (error) {
+            let errorElement = document.querySelector('.error');
+            if (errorElement !== null) {
+                errorElement.textContent = error.message;
+                errorElement.style.display = "block";
+            }
+        }
+    </script>
 </body>
 
 </html>
