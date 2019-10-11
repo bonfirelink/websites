@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spark: Summer Solstice Party 2020</title>
+    <link href="/spark/styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <p class="error" style="display: none;">&nbsp;</div>
+
+        <div class="commitment commitment-high" style="display: none;">
+            <p>That is great! How would you participate with this idea?</p>
+
+        </div>
+
+        <div class="commitment commitment-low" style="display: none;">
+            <p>Thank you for your feedback.</p>
+            <p>How could this idea be approved?</p>
+            <form action="/spark/state">
+                <textarea name="alternative-suggestion" id="alternative-suggestion" cols="30" rows="10"></textarea>
+                <input type="submit" value="Next">
+            </form>
+        </div>
+        <script>
+            let params, amount;
+
+            try {
+                params = new URLSearchParams(window.location.search);
+                amount = parseInt(params.get("amount"));
+                console.log(amount);
+
+                if (!amount && amount !== 0) {
+                    throw new Error('Amount not defined.');
+                }
+
+                if (amount >= 50 && amount <= 100) {
+                    let commitmentHighElement = document.querySelector('.commitment-high');
+                    if (commitmentHighElement !== null) {
+                        commitmentHighElement.style.display = 'block';
+                    }
+                } else if (amount > 0 && amount < 50) {
+                    let commitmentLowWlement = document.querySelector('.commitment-low');
+                    if (commitmentLowWlement !== null) {
+                        commitmentLowWlement.style.display = 'block';
+                    }
+                } else {
+                    throw new Error('Amount not within range.');
+                }
+            } catch (error) {
+                let errorElement = document.querySelector('.error');
+                if (errorElement !== null) {
+                    errorElement.textContent = error.message;
+                    errorElement.style.display = "block";
+                }
+            }
+        </script>
+</body>
+
+</html>
