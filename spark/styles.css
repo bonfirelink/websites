@@ -17,6 +17,10 @@ img {
     max-width: 100%;
 }
 
+canvas {
+    display: block;
+}
+
 /*
  Input Range Component
 */
