@@ -10,26 +10,11 @@
 </head>
 
 <body>
-    <header class="page-header-collapsed" style="padding-bottom: 0;">
-        <div>
-                <canvas id="flame"></canvas>
-        </div>
-        
-    </header>
-
-    <main class="page-main">
-        <h1>Thanks!</h1>
-        <p id="amount"></p>
-        <p>The Summer Solstice Party has many contributors so far. You will be contacted via email in the coming days.
-        </p>
-        <p>In the meantime, you can make the fire great again. Ask a friend to join the event and make it better !</p>
-
+    <header class="page-header-flame">
+        <canvas id="flame"></canvas>
         <script>
             const amount = 30;
             const objective = 100;
-            
-            document.getElementById("amount").innerHTML = amount + " CHF is in the pool. You need " + (objective - amount) + " CHF to reach the " + objective + " CHF goal.";
-            
             const canvas = document.getElementById('flame');
             let stage;
             let width;
@@ -109,8 +94,18 @@
                 canvas.parentNode.removeChild(canvas);
             }
             requestAnimationFrame(update);
-
         </script>
+    </header>
+
+    <main class="page-main">
+        <h1>Thanks!</h1>
+        <p id="amount"></p>
+        <script>
+            document.getElementById("amount").innerHTML = amount + " CHF is in the pool. You need " + (objective - amount) + " CHF to reach the " + objective + " CHF goal.";
+        </script>
+        <p>The Summer Solstice Party has many contributors so far. You will be contacted via email in the coming days.
+        </p>
+        <p>In the meantime, you can make the fire great again. Ask a friend to join the event and make it better !</p>
         <div class="tell-a-friend">
             <form method="post" action="javascript:;" onSubmit="this.action='mailto:'+document.getElementById('email').value+'?subject=Event invitation&body=Hi !%0D%0AI will be at this event, take a look here :%0D%0Ahttp://128.141.118.122:5000/spark %0D%0AThis is a self organised event using blockchain, amazing isn\'t it ?%0D%0AI hope to see you there !';" enctype="text/plain">
                 <label for="email">Friend’s email address:</label>
