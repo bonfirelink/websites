@@ -43,13 +43,22 @@
                 </div>
             </form>
             <script>
+                let timeout;
+
                 function onToggleClick(event) {
                     event.stopImmediatePropagation();
                     event.preventDefault();
-                    const element = event.target;
 
-                    const selector = element.getAttribute('data-target');
+                    const selector = event.target.getAttribute('data-target');
                     collapse(selector, 'toggle');
+
+                    const toggleDirectionElement = event.target.querySelector('.toggle-direction');
+                    
+                    console.log(event.target, toggleDirectionElement);
+                    
+                    timeout = setTimeout(function() {
+                        toggleDirectionElement.textContent = toggleDirectionElement.textContent === '▼' ? '▲' : '▼';
+                    }, 250);
                 }
 
                 const rolesToggle = document.querySelector('[href="#roles"]');

@@ -304,10 +304,6 @@ a[data-toggle="collapse"] {
     height: 30px;
 }
 
-a[data-toggle="collapse"] .toggle-direction {
-    border: 1px solid red;
-}
-
 .collapse {
     display: block;
     max-height: 0;
