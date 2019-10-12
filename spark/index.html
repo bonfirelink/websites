@@ -9,161 +9,164 @@
 </head>
 
 <body>
-  <h3>Idea:</h3>
+  <strong>Idea:</strong>
   <h1>Have a Party to celebrate Summer Solstice</h1>
   <p>Let us celebrate the summer solstice together again by going into nature, enjoying good food and drink, and
     dancing to great music.</p>
   <img src="https://images.unsplash.com/photo-1528243097678-739049bbf2e7?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;w=1200">
   <img src="https://images.unsplash.com/photo-1545128485-c400e7702796?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;w=1200">
-  <div id="commit" style="display: block;">
-    <form action="/spark/commit">
-      <p>How passionate are you about this idea?</p>
+  <form action="/spark/commit">
+    <div id="commit" style="display: block;">
+      <p class="question"><strong>How passionate are you about this idea?</strong></p>
       <canvas id="flame"></canvas>
-      <div>
+      <div class="commit-range">
         <input type="range" min="0" max="100" id="range" />
+        <p class="range-description">
+          <button type="button" id="range-none" class="range-description-button">Not at passionate</button>
+          <button type="button" id="range-full" class="range-description-button">Very passionate</button>
+        </p>
       </div>
-      <p class="range-description">
-        <button type="button" id="range-none" class="range-description-button">Not at passionate</button>
-        <button type="button" id="range-full" class="range-description-button">Very passionate</button>
-      </p>
-      <input type="hidden" name="amount" id="amount" value="100" />
-      <input type="submit" value="Next">
-    </form>
-    <script>
-      const canvas = document.getElementById('flame');
-      const range = document.getElementById('range');
-      const rangeNone = document.getElementById('range-none');
-      const rangeFull = document.getElementById('range-full');
-      const amount = document.getElementById('amount');
+      <input type="hidden" name="amount" id="amount" value="50" />
+      <script>
+        const canvas = document.getElementById('flame');
+        const range = document.getElementById('range');
+        const rangeNone = document.getElementById('range-none');
+        const rangeFull = document.getElementById('range-full');
+        const amount = document.getElementById('amount');
 
-      let stage;
-      let width;
-      let height = 300;
-      let particles = [];
-      let max = 60;
-      let posX = 0;
-      let posY = 0;
-      let speed = 2;
-      let size = 10;
-      let isFirstInteraction = true;
+        let stage;
+        let width;
+        let height = 300;
+        let particles = [];
+        let max = 60;
+        let posX = 0;
+        let posY = 0;
+        let speed = 2;
+        let size = 10;
+        let isFirstInteraction = true;
 
-      let request;
+        let request;
 
-      function Particle(x, y, xs, ys) {
-        this.x = x;
-        this.y = y;
-        this.xs = xs;
-        this.ys = ys;
-        this.life = 0;
-      }
-
-      function resizeCanvas() {
-        setTimeout(function () {
-          width = window.innerWidth;
-          canvas.width = width;
-          canvas.height = height;
-          canvas.style.width = width - 15 + "px";
-          canvas.style.height = height + "px";
-          posX = canvas.width / 2;
-          posY = canvas.height * 0.9;
-          stage.globalCompositeOperation = "lighter"
-        }, 0);
-      }
-
-      // Code adapted from: https://codepen.io/davepvm/pen/Hhstl
-      function update() {
-        request = requestAnimationFrame(update)
-
-        for (let i = 0; i < 10; i++) {
-          let p = new Particle(posX, posY, (Math.random() * 2 * speed - speed) / 2, 0 - Math.random() * 2 * speed);
-          particles.push(p);
+        function Particle(x, y, xs, ys) {
+          this.x = x;
+          this.y = y;
+          this.xs = xs;
+          this.ys = ys;
+          this.life = 0;
         }
 
-        stage.clearRect(0, 0, width, height);
+        function resizeCanvas() {
+          setTimeout(function () {
+            width = window.innerWidth;
+            canvas.width = width;
+            canvas.height = height;
+            canvas.style.width = width - 15 + "px";
+            canvas.style.height = height + "px";
+            posX = canvas.width / 2;
+            posY = canvas.height * 0.9;
+            stage.globalCompositeOperation = "lighter"
+          }, 0);
+        }
 
-        for (i = 0; i < particles.length; i++) {
-          stage.fillStyle = "rgba(" + (260 - (particles[i].life * 2)) + "," + ((particles[i].life * 2) + 50) + "," + (particles[i].life * 2) + "," + (((max - particles[i].life) / max) * 0.4) + ")";
-          stage.beginPath();
-          stage.arc(particles[i].x, particles[i].y, (max - particles[i].life) / max * (size / 2) + (size / 2), 0, 2 * Math.PI);
-          stage.fill();
-          particles[i].x += particles[i].xs;
-          particles[i].y += particles[i].ys;
+        // Code adapted from: https://codepen.io/davepvm/pen/Hhstl
+        function update() {
+          request = requestAnimationFrame(update)
 
-          particles[i].life++;
+          for (let i = 0; i < 10; i++) {
+            let p = new Particle(posX, posY, (Math.random() * 2 * speed - speed) / 2, 0 - Math.random() * 2 * speed);
+            particles.push(p);
+          }
 
-          if (particles[i].life >= max) {
-            particles.splice(i, 1);
-            i--;
+          stage.clearRect(0, 0, width, height);
+
+          for (i = 0; i < particles.length; i++) {
+            stage.fillStyle = "rgba(" + (260 - (particles[i].life * 2)) + "," + ((particles[i].life * 2) + 50) + "," + (particles[i].life * 2) + "," + (((max - particles[i].life) / max) * 0.4) + ")";
+            stage.beginPath();
+            stage.arc(particles[i].x, particles[i].y, (max - particles[i].life) / max * (size / 2) + (size / 2), 0, 2 * Math.PI);
+            stage.fill();
+            particles[i].x += particles[i].xs;
+            particles[i].y += particles[i].ys;
+
+            particles[i].life++;
+
+            if (particles[i].life >= max) {
+              particles.splice(i, 1);
+              i--;
+            }
           }
         }
-      }
 
-      function onRangeInput() {
-        size = range.value / 100 * 20;
-        speed = range.value > 50 ? 2 : 1;
+        function onRangeInput() {
+          size = range.value / 100 * 20;
+          speed = range.value > 50 ? 2 : 1;
 
-        // Only start the flame animation upon interaction
-        if (isFirstInteraction) {
-          requestAnimationFrame(update);
-          isFirstInteraction = false;
+          // Only start the flame animation upon interaction
+          if (isFirstInteraction) {
+            requestAnimationFrame(update);
+            let submitElement = document.getElementById('submit');
+            if (submitElement !== null) {
+              submitElement.disabled = false;
+            }
+            isFirstInteraction = false;
+          }
         }
-      }
 
-      range.addEventListener('change', function () {
-        amount.value = range.value;
-      });
-
-      range.addEventListener('input', onRangeInput);
-
-      rangeFull.addEventListener('click', function() {
-          range.value = 100;
-          onRangeInput();
-      });
-
-      rangeFull.addEventListener('click', function() {
-          range.value = 100;
-          onRangeInput();
-      });
-
-      rangeNone.addEventListener('click', function() {
-          range.value = 0;
-          onRangeInput();
-      });
-
-      const canvasSupported = canvas.getContext;
-      if (canvasSupported) {
-        stage = canvas.getContext("2d");
-        resizeCanvas();
-        
-        // Makes the colors add onto each other, producing that nice white in the middle of the fire
-        stage.globalCompositeOperation = "xor";
-        
-        window.addEventListener("resize", function () {
-          resizeCanvas();
+        range.addEventListener('change', function () {
+          amount.value = range.value;
         });
 
-        cancelAnimationFrame(request);
-      } else {
-        canvas.parentNode.removeChild(canvas);
+        range.addEventListener('input', onRangeInput);
+
+        rangeFull.addEventListener('click', function () {
+          range.value = 100;
+          onRangeInput();
+        });
+
+        rangeFull.addEventListener('click', function () {
+          range.value = 100;
+          onRangeInput();
+        });
+
+        rangeNone.addEventListener('click', function () {
+          range.value = 0;
+          onRangeInput();
+        });
+
+        const canvasSupported = canvas.getContext;
+        if (canvasSupported) {
+          stage = canvas.getContext("2d");
+          resizeCanvas();
+
+          // Makes the colors add onto each other, producing that nice white in the middle of the fire
+          stage.globalCompositeOperation = "xor";
+
+          window.addEventListener("resize", function () {
+            resizeCanvas();
+          });
+
+          cancelAnimationFrame(request);
+        } else {
+          canvas.parentNode.removeChild(canvas);
+        }
+      </script>
+    </div>
+    <input id="submit" type="submit" class="button" value="Next" disabled>
+    <script>
+      let params, participated = false;
+      try {
+        params = new URLSearchParams(window.location.search);
+        participated = params.get('participated') === '1';
+      } catch (error) { }
+
+      if (participated) {
+        console.log('participated')
+        const commitFormElment = document.querySelector('#commit');
+        if (commitFormElment !== null) {
+          commitFormElment.style.display = 'none';
+        }
       }
     </script>
-  </div>
-
-  <script>
-    let params, participated = false;
-    try {
-      params = new URLSearchParams(window.location.search);
-      participated = params.get('participated') === '1';
-    } catch (error) { }
-
-    if (participated) {
-      console.log('participated')
-      const commitFormElment = document.querySelector('#commit');
-      if (commitFormElment !== null) {
-        commitFormElment.style.display = 'none';
-      }
-    }
-  </script>
+  </form>
 </body>
 
 </html>
