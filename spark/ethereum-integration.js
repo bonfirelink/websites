@@ -1,4 +1,4 @@
-document.getElementById('commit-form').addEventListener('submit', function(e){ //say this is an anchor
+document.getElementById('commit-form').addEventListener('submit', function (e) { //say this is an anchor
     console.log("form submit");
     e.preventDefault();
 
@@ -31,3 +31,6 @@ web3.eth.getBalance(address, (err, wei) => {
     balance = web3.utils.fromWei(wei, 'ether')
     console.log(balance);
 });
+
+
+
