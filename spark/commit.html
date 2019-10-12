@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Spark: Summer Solstice Party 2020</title>
     <link href="/spark/styles.css" rel="stylesheet">
+    <link rel='manifest' href='/spark/manifest.webmanifest'>
 </head>
 
 <body>
@@ -19,7 +20,7 @@
             <p><strong>How would you contribute to this cause?</strong></p>
             <form action="/spark/state">
                 <div>
-                    <a href="#roles" data-toggle="collapse" data-target="#roles">By filling a role ▼</a>
+                    <a href="#roles" data-toggle="collapse" data-target="#roles">By filling a role <span class="toggle-direction">▼</span></a>
                     <div id="roles" class="collapse">
                         <p>The following roles are open:</p>
                         <label class="commit-form-label" for="organizer"><input type="radio" id="organizer" name="role" value="organizer">Organizer</label>
@@ -29,7 +30,7 @@
                     </div>
                 </div>
                 <div>
-                    <a href="#donation" data-toggle="collapse" data-target="#donation">By making a donation ▼</a>
+                    <a href="#donation" data-toggle="collapse" data-target="#donation">By making a donation <span class="toggle-direction">▼</span></a>
                     <div id="donation" class="collapse">
                         <label class="commit-form-label" for="donate-some"><input type="radio" id="donate-some" name="donation" value="10">10 CHF</label>
                         <label class="commit-form-label" for="donate-lots"><input type="radio" id="donate-lots" name="donation" value="30">30 CHF</label>
