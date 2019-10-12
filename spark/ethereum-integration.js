@@ -1,17 +1,20 @@
 let bfAddress = "0x67ED0100E6Bf5E8E63Cc1F917a339563dEd204f4";
 
-try {
-    params = new URLSearchParams(window.location.search);
-    amountInCHF = params.get('amount');
-    amountInWei = (amountInCHF * 5470412646087).toString();
-    console.log("send in chf" + amountInCHF);
-    console.log("send in wei" + amountInWei);
 
-} catch (error) {
-}
 commitForm = document.getElementById('commit-form');
 if (commitForm !== null) {
     commitForm.addEventListener('submit', function (event) {
+
+        // Grab the selected amount out of the DOM upon form submission.
+        const checkedDonationElement = document.querySelector('input[name="donation"]:checked');
+
+        let amountInCHF = checkedDonationElement !== null ? parseInt(checkedDonationElement.value) : 0;
+        let amountInEther = amountInCHF / 180;
+        let amountInWei = web3.toWei(amountInEther, 'ether');
+        
+        console.log("amount in CHF", amountInCHF);
+        console.log('amount in Ether', amountInEther);
+        console.log("amount in Wei", amountInWei);
 
         //Push transaction to rinkeby testnet
         const transactionParameters = {
@@ -20,10 +23,11 @@ if (commitForm !== null) {
             gasLimit: '0x0710',  // customizable by user during MetaMask confirmation.
             to: bfAddress, // Required except during contract publications.
             from: web3.currentProvider.publicConfigStore.getState().selectedAddress, // must match user's active address.
-            value: '0x10000000000', // Only required to send ether to the recipient from the initiating external account.
+            value: amountInWei, // Only required to send ether to the recipient from the initiating external account.
             data: '', // Optional, but used for defining smart contract creation and interaction.
             chainId: 3 // Used to prevent transaction reuse across blockchains. Auto-filled by MetaMask.
         };
+
         try {
             ethereum.enable();
             ethereum.sendAsync({
