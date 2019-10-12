@@ -13,6 +13,7 @@
     <header class="page-header-collapsed">&nbsp;</header>
 
     <main class="page-main">
+
         <h1>Thanks !</h1>
         <p>But goal isn't reached yet</p>
         <p id="amount"></p>
@@ -111,14 +112,17 @@
             requestAnimationFrame(update);
 
         </script>
-        <form method="post" action="javascript:;"
-            onSubmit="this.action='mailto:'+document.getElementById('email').value+'?subject=Event invitation&body=Hi !%0D%0AI will be at this event, take a look here :%0D%0Ahttp://128.141.118.122:5000/spark %0D%0AThis is a self organised event using blockchain, amazing isn\'t it ?%0D%0AI hope to see you there !';"
-            enctype="text/plain">
-            <label for="email">Email</label>
-            <input type="text" id="email">
-            <input type="submit" value="Tell a friend">
-        </form>
-        <a class="button" href="/spark?participated=1">Back to the Overview</a>
+        <div class="tell-a-friend"></div>
+            <form method="post" action="javascript:;" onSubmit="this.action='mailto:'+document.getElementById('email').value+'?subject=Event invitation&body=Hi !%0D%0AI will be at this event, take a look here :%0D%0Ahttp://128.141.118.122:5000/spark %0D%0AThis is a self organised event using blockchain, amazing isn\'t it ?%0D%0AI hope to see you there !';" enctype="text/plain">
+                <label for="email">Friend’s email address:</label>
+                <input type="email" id="email" placeholder="friend@domain.com">
+                <input type="submit" value="Tell a friend">
+            </form>
+        </div>
+        <p style="text-align: center;">
+            <a href="/spark?participated=1">Back to the introduction</a>
+        </p>
+
     </main>
 
     <footer class="page-footer">

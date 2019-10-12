@@ -18,15 +18,14 @@
         <div class="commitment commitment-high" style="display: none;">
             <h1>That is great!</h1>
             <p><strong>How would you contribute to this cause?</strong></p>
-            <form action="/spark/state">
+            <form id="commit-form" action="/spark/state">
                 <div>
                     <a href="#roles" data-toggle="collapse" data-target="#roles">By filling a role <span class="toggle-direction">▼</span></a>
                     <div id="roles" class="collapse">
-                        <p>The following roles are open:</p>
-                        <label class="commit-form-label" for="organizer"><input type="radio" id="organizer" name="role" value="organizer">Organizer</label>
-                        <label class="commit-form-label" for="cook"><input type="radio" id="cook" name="role" value="cook">Cook</label>
-                        <label class="commit-form-label" for="barkeeper"><input type="radio" id="barkeeper" name="role" value="barkeeper">Barkeeper</label>
-                        <label class="commit-form-label" for="helper"><input type="radio" id="helper" name="role" value="helper">Helper</label>
+                        <label class="commit-form-label" for="role-organizer"><input type="checkbox" id="role-organizer" name="role" value="organizer">Organizer</label>
+                        <label class="commit-form-label" for="role-cook"><input type="checkbox" id="role-cook" name="role" value="cook">Cook</label>
+                        <label class="commit-form-label" for="role-barkeeper"><input type="checkbox" id="role-barkeeper" name="role" value="barkeeper">Barkeeper</label>
+                        <label class="commit-form-label" for="role-custom"><input type="checkbox" id="role-custom" name="role">Suggested Role:&nbsp;<input type="text" id="role-custom-suggestion"></label>
                     </div>
                 </div>
                 <div>
@@ -35,6 +34,7 @@
                         <label class="commit-form-label" for="donate-some"><input type="radio" id="donate-some" name="donation" value="10">10 CHF</label>
                         <label class="commit-form-label" for="donate-lots"><input type="radio" id="donate-lots" name="donation" value="30">30 CHF</label>
                         <label class="commit-form-label" for="donate-huge"><input type="radio" id="donate-huge" name="donation" value="50">50 CHF</label>
+                        <label class="commit-form-label" for="donate-custom"><input type="radio" id="donate-custom" name="donation">Custom Amount:&nbsp;<input type="number" id="donate-custom-amount"></label>
                     </div>
                 </div>
                 <p>Make the Summer Solstice Party happen. Your contribution counts.</p>
@@ -42,6 +42,25 @@
                     <input type="submit" class="button" value="Next">
                 </div>
             </form>
+            <script>
+                const customRoleCheckboxElement = document.querySelector('#role-custom');
+                const customRoleInputElement = document.querySelector('#role-custom-suggestion');
+                customRoleInputElement.addEventListener('click', function () {
+                    customRoleCheckboxElement.checked = true;
+                });
+                customRoleInputElement.addEventListener('input', function () {
+                    customRoleCheckboxElement.value = customRoleInputElement.value;
+                });
+
+                const customDonateRadioElement = document.querySelector('#donate-custom');
+                const customDonateInputElement = document.querySelector('#donate-custom-amount');
+                customDonateInputElement.addEventListener('click', function () {
+                    customDonateRadioElement.checked = true;
+                });
+                customDonateInputElement.addEventListener('input', function () {
+                    customDonateRadioElement.value = customDonateInputElement.value;
+                });
+            </script>
             <script>
                 let timeout;
 
@@ -53,10 +72,8 @@
                     collapse(selector, 'toggle');
 
                     const toggleDirectionElement = event.target.querySelector('.toggle-direction');
-                    
-                    console.log(event.target, toggleDirectionElement);
-                    
-                    timeout = setTimeout(function() {
+
+                    timeout = setTimeout(function () {
                         toggleDirectionElement.textContent = toggleDirectionElement.textContent === '▼' ? '▲' : '▼';
                     }, 250);
                 }
@@ -128,6 +145,8 @@
             }
         }
     </script>
+    <script src="web3.min.js"></script>
+    <script src="ethereum-integration.js"></script>
 </body>
 
 </html>
