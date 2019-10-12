@@ -12,7 +12,7 @@
     <h1>Thanks!</h1>
     <p>The Summer Solstice Party has many contributors so far. You will be contacted via email in the coming days.</p>
     <p>In the meantime, spread the word to make this experience even better!</p>
-    <form action="#">
+    <form method="post" action="javascript:;" onSubmit="this.action='mailto:'+document.getElementById('email').value+'?subject=Event invitation&body=Hi !%0D%0AI will be at this event, take a look here :%0D%0Ahttp://128.141.118.122:5000/spark %0D%0AThis is a self organised event using blockchain, amazing isn\'t it ?%0D%0AI hope to see you there !';" enctype="text/plain">
         <label for="email">Email</label>
         <input type="text" id="email">
         <input type="submit" value="Tell a friend">
