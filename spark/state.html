@@ -10,11 +10,14 @@
 </head>
 
 <body>
-    <header class="page-header-collapsed">&nbsp;</header>
+    <header class="page-header-collapsed" style="padding-bottom: 0;">
+        <div>
+                <canvas id="flame"></canvas>
+        </div>
+        
+    </header>
 
     <main class="page-main">
-        <canvas id="flame"></canvas>
-
         <h1>Thanks!</h1>
         <p id="amount"></p>
         <p>The Summer Solstice Party has many contributors so far. You will be contacted via email in the coming days.
@@ -50,7 +53,7 @@
 
             function resizeCanvas() {
                 setTimeout(function () {
-                    width = window.innerWidth;
+                    width = window.innerWidth > 500 ? 500 : window.innerWidth;
                     canvas.width = width;
                     canvas.height = height;
                     canvas.style.width = width - 30 + "px";
