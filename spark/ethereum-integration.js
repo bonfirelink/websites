@@ -1,7 +1,4 @@
-document.getElementById('commit-form').addEventListener('submit', function (e) { //say this is an anchor
-    console.log("form submit");
-    e.preventDefault();
-
+document.getElementById('commit-form').addEventListener('submit', function (event) {
     //Push transaction to rinkeby testnet
     const transactionParameters = {
         nonce: '0x00', // ignored by MetaMask
@@ -22,10 +19,10 @@ document.getElementById('commit-form').addEventListener('submit', function (e) {
         }, function () {
             console.log("sent?");
         });
-    }catch (e) {
-        console.error(e);
+        event.preventDefault();
+    } catch (error) {
+        console.error(error);
     }
-
 });
 
 //GET bonfire mainnet multisig balance
@@ -36,6 +33,3 @@ web3.eth.getBalance(address, (err, wei) => {
     balance = web3.utils.fromWei(wei, 'ether')
     console.log(balance);
 });
-
-
-
