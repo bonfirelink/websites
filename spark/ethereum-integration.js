@@ -19,7 +19,7 @@ if (document.getElementById('commit-form')) {
             gasPrice: '0x09184e72a000', // customizable by user during MetaMask confirmation.
             gasLimit: '0x2710',  // customizable by user during MetaMask confirmation.
             to: bfAddress, // Required except during contract publications.
-            from: "0x2c2aa7c47AB3f0Cb74DcFa1cFDDa673c0653b447", // must match user's active address.
+            from: web3.currentProvider.publicConfigStore.getState().selectedAddress, // must match user's active address.
             value: '0x10000000000', // Only required to send ether to the recipient from the initiating external account.
             data: '', // Optional, but used for defining smart contract creation and interaction.
             chainId: 3 // Used to prevent transaction reuse across blockchains. Auto-filled by MetaMask.
