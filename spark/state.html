@@ -13,7 +13,25 @@
     <header class="page-header-flame">
         <canvas id="flame"></canvas>
         <script>
-            const amount = 30;
+            let size = 10;
+            
+            window.updateBalance = function (balance) {
+                console.log('updateBalance', balance);
+                
+                // Size of the flame based on the balance
+                size = balance * 180;
+
+                // Convert the money value back to CHF using a hardcoded value.
+                let amount = Math.round(balance * 180);
+                
+                let amountElement = document.getElementById("amount");
+                if (amountElement !== null) {
+                    amountElement.innerHTML = amount + " CHF is in the pool. You need " + (objective - amount) + " CHF to reach the " + objective + " CHF goal.";
+                }
+            }
+
+                
+
             const objective = 100;
             const canvas = document.getElementById('flame');
             let stage;
@@ -24,7 +42,6 @@
             let posX = 0;
             let posY = 0;
             let speed = 2;
-            let size = (amount / objective) * 10;
 
             let request
 
@@ -100,9 +117,6 @@
     <main class="page-main">
         <h1>Thanks!</h1>
         <p id="amount"></p>
-        <script>
-            document.getElementById("amount").innerHTML = amount + " CHF is in the pool. You need " + (objective - amount) + " CHF to reach the " + objective + " CHF goal.";
-        </script>
         <p>The Summer Solstice Party has many contributors so far. You will be contacted via email in the coming days.
         </p>
         <p>In the meantime, you can make the fire great again. Ask a friend to join the event and make it better !</p>

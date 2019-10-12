@@ -7,6 +7,8 @@ const web3 = new Web3(rpcURL)
 //const address = '0x1f7DAF77668306702128c95D0F0F6aeD8161564E';// Your account address goes here
 
 web3.eth.getBalance(bfAddress, (err, wei) => {
-    balance = web3.utils.fromWei(wei, 'ether');
-    console.log(balance);
+    let balance = web3.utils.fromWei(wei, 'ether');
+    console.log('balance', balance);
+
+    window.updateBalance(balance);
 });
