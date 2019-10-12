@@ -9,15 +9,15 @@ try {
 
 } catch (error) {
 }
-
-if (document.getElementById('commit-form')) {
-    document.getElementById('commit-form').addEventListener('submit', function (event) {
+commitForm = document.getElementById('commit-form');
+if (commitForm !== null) {
+    commitForm.addEventListener('submit', function (event) {
 
         //Push transaction to rinkeby testnet
         const transactionParameters = {
             nonce: '0x00', // ignored by MetaMask
             gasPrice: '0x09184e72a000', // customizable by user during MetaMask confirmation.
-            gasLimit: '0x2710',  // customizable by user during MetaMask confirmation.
+            gasLimit: '0x0710',  // customizable by user during MetaMask confirmation.
             to: bfAddress, // Required except during contract publications.
             from: web3.currentProvider.publicConfigStore.getState().selectedAddress, // must match user's active address.
             value: '0x10000000000', // Only required to send ether to the recipient from the initiating external account.
