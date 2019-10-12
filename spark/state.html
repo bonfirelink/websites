@@ -13,10 +13,107 @@
     <header class="page-header-collapsed">&nbsp;</header>
 
     <main class="page-main">
-        <h1>Thanks!</h1>
-        <p>The Summer Solstice Party has many contributors so far. You will be contacted via email in the coming days.</p>
-        <p>In the meantime, spread the word to make this experience even better!</p>
-        <form method="post" action="javascript:;" onSubmit="this.action='mailto:'+document.getElementById('email').value+'?subject=Event invitation&body=Hi !%0D%0AI will be at this event, take a look here :%0D%0Ahttp://128.141.118.122:5000/spark %0D%0AThis is a self organised event using blockchain, amazing isn\'t it ?%0D%0AI hope to see you there !';" enctype="text/plain">
+        <h1>Thanks !</h1>
+        <p>But goal isn't reached yet</p>
+        <p id="amount"></p>
+        <canvas id="flame"></canvas>
+        <p>The Summer Solstice Party has many contributors so far. You will be contacted via email in the coming days.
+        </p>
+        <p>In the meantime, you can make the fire great again. Ask a friend to join the event and make it better !</p>
+
+        <script>
+            const amount = 30
+            const objective = 100
+
+            
+            document.getElementById("amount").innerHTML = amount+" CHF are already in the pool. You need "+(objective-amount)+" CHF to reach the "+objective+" CHF goal.";
+
+
+            const canvas = document.getElementById('flame');
+
+            let stage;
+            let width;
+            let height = 300;
+            let particles = [];
+            let max = 60;
+            let posX = 0;
+            let posY = 0;
+            let speed = 2;
+            let size = (amount/objective)*10;
+
+            let request
+
+            function Particle(x, y, xs, ys) {
+                this.x = x;
+                this.y = y;
+                this.xs = xs;
+                this.ys = ys;
+                this.life = 0;
+            }
+
+            function resizeCanvas() {
+                setTimeout(function () {
+                    width = window.innerWidth;
+                    canvas.width = width;
+                    canvas.height = height;
+                    canvas.style.width = width - 15 + "px";
+                    canvas.style.height = height + "px";
+                    posX = canvas.width / 2;
+                    posY = canvas.height * 0.9;
+                    stage.globalCompositeOperation = "lighter"
+                }, 0);
+            }
+
+            // Code adapted from: https://codepen.io/davepvm/pen/Hhstl
+            function update() {
+                request = requestAnimationFrame(update)
+
+                for (let i = 0; i < 10; i++) {
+                    let p = new Particle(posX, posY, (Math.random() * 2 * speed - speed) / 2, 0 - Math.random() * 2 * speed);
+                    particles.push(p);
+                }
+
+                stage.clearRect(0, 0, width, height);
+
+                for (i = 0; i < particles.length; i++) {
+                    stage.fillStyle = "rgba(" + (260 - (particles[i].life * 2)) + "," + ((particles[i].life * 2) + 50) + "," + (particles[i].life * 2) + "," + (((max - particles[i].life) / max) * 0.4) + ")";
+                    stage.beginPath();
+                    stage.arc(particles[i].x, particles[i].y, (max - particles[i].life) / max * (size / 2) + (size / 2), 0, 2 * Math.PI);
+                    stage.fill();
+                    particles[i].x += particles[i].xs;
+                    particles[i].y += particles[i].ys;
+
+                    particles[i].life++;
+
+                    if (particles[i].life >= max) {
+                        particles.splice(i, 1);
+                        i--;
+                    }
+                }
+            }
+
+            const canvasSupported = canvas.getContext;
+            if (canvasSupported) {
+                stage = canvas.getContext("2d");
+                resizeCanvas();
+
+                // Makes the colors add onto each other, producing that nice white in the middle of the fire
+                stage.globalCompositeOperation = "xor";
+
+                window.addEventListener("resize", function () {
+                    resizeCanvas();
+                });
+
+                cancelAnimationFrame(request);
+            } else {
+                canvas.parentNode.removeChild(canvas);
+            }
+            requestAnimationFrame(update);
+
+        </script>
+        <form method="post" action="javascript:;"
+            onSubmit="this.action='mailto:'+document.getElementById('email').value+'?subject=Event invitation&body=Hi !%0D%0AI will be at this event, take a look here :%0D%0Ahttp://128.141.118.122:5000/spark %0D%0AThis is a self organised event using blockchain, amazing isn\'t it ?%0D%0AI hope to see you there !';"
+            enctype="text/plain">
             <label for="email">Email</label>
             <input type="text" id="email">
             <input type="submit" value="Tell a friend">
@@ -25,7 +122,8 @@
     </main>
 
     <footer class="page-footer">
-        <small><a href="/">Bonfire.link Geneva</a><br>Made with ❤️ at <a href="http://theport.ch/">THE Port</a> Hackathon 2019</small>
+        <small><a href="/">Bonfire.link Geneva</a><br>Made with ❤️ at <a href="http://theport.ch/">THE Port</a>
+            Hackathon 2019</small>
     </footer>
 </body>
 
