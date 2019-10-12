@@ -36,7 +36,7 @@ canvas {
     display: block;
 }
 
-input[type=text] {
+input[type=text], input[type=email] {
     height: 40px;
     font: inherit;
 }
@@ -314,4 +314,31 @@ a[data-toggle="collapse"] {
 .collapse.show {
     max-height: 99em;
     transition: max-height .5s ease-in-out;
+}
+
+/*
+ Tell-a-friend component
+ */
+ .tell-a-friend label {
+     display: block;
+ }
+
+
+
+ .tell-a-friend input[type=submit] {
+    font-size: 16px;
+    border: none;
+    color: white;
+    background-color: #007eff;
+    padding: 10px;
+    border-radius: 3px;
+    margin: 15px auto;
+    text-decoration: none;
+    text-align: center;
+
+ }
+
+ .tell-a-friend input[type=submit],  .tell-a-friend input[type=email] {
+    vertical-align: middle;
+    height: 40px;
 }
