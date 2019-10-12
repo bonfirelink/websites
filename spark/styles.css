@@ -36,7 +36,7 @@ canvas {
     display: block;
 }
 
-input[type=text], input[type=email] {
+input[type=text], input[type=email], input[type=number] {
     height: 40px;
     font: inherit;
 }
@@ -292,6 +292,11 @@ input[type=text], input[type=email] {
 .commitment-low textarea {
     width: 100%;
     font: inherit;
+}
+
+.commitment-high #donate-custom-amount, .commitment-high #role-custom-suggestion{
+    width: 100px;
+    height: 30px;
 }
 
 /*
