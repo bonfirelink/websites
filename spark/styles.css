@@ -18,10 +18,9 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
     background-color: #272822;
     color: white;
-
     display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 a {
@@ -294,7 +293,7 @@ input[type=text], input[type=email], input[type=number] {
     font: inherit;
 }
 
-.commitment-high #donate-custom-amount, .commitment-high #role-custom-suggestion{
+.commitment-high #donate-custom-amount, .commitment-high #role-custom-suggestion {
     width: 100px;
     height: 30px;
 }
@@ -324,13 +323,12 @@ a[data-toggle="collapse"] {
 /*
  Tell-a-friend component
  */
- .tell-a-friend label {
-     display: block;
- }
 
+.tell-a-friend label {
+    display: block;
+}
 
-
- .tell-a-friend input[type=submit] {
+.tell-a-friend input[type=submit] {
     font-size: 16px;
     border: none;
     color: white;
@@ -340,10 +338,9 @@ a[data-toggle="collapse"] {
     margin: 15px auto;
     text-decoration: none;
     text-align: center;
+}
 
- }
-
- .tell-a-friend input[type=submit],  .tell-a-friend input[type=email] {
+.tell-a-friend input[type=submit], .tell-a-friend input[type=email] {
     vertical-align: middle;
     height: 40px;
 }

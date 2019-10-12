@@ -1,13 +1,13 @@
 {
-	"dir" : "ltr",
-	"lang" : "en",
-	"name" : "bonfire.link",
-	"scope" : "/",
-	"display" : "browser",
-	"start_url" : "https://bonfire.link/spark",
-	"short_name" : "bonfire.link Spark",
-	"theme_color" : "#007eff",
-	"description" : "An app to poll and fund an idea.",
-	"orientation" : "any",
-	"background_color" : "#272822"
+	"dir": "ltr",
+	"lang": "en",
+	"name": "bonfire.link",
+	"scope": "/",
+	"display": "browser",
+	"start_url": "https://bonfire.link/spark",
+	"short_name": "bonfire.link Spark",
+	"theme_color": "#007eff",
+	"description": "An app to poll and fund an idea.",
+	"orientation": "any",
+	"background_color": "#272822"
 }
