@@ -9,56 +9,55 @@
 </head>
 
 <body>
-    <p class="error" style="display: none;">&nbsp;</p>
+    <header class="page-header-collapsed">&nbsp;</header>
 
-    <div class="commitment commitment-high" style="display: none;">
-        <p>That is great! How would you contribute to this cause?</p>
-        <form action="/spark/state">
-            <div>
-                <p>Make a donation:</p>
-                <input type="radio" id="donate-none" name="donation" value="0" checked>
-                <label for="donate-none">No donation</label>
-                <input type="radio" id="donate-some" name="donation" value="10">
-                <label for="donate-some">10 CHF</label>
-                <input type="radio" id="donate-lots" name="donation" value="20">
-                <label for="donate-lots">30 CHF</label>
-                <input type="radio" id="donate-huge" name="donation" value="50">
-                <label for="donate-huge">50 CHF</label>
-            </div>
-            <div>
-                <p>Fill a role:</p>
-                <input type="radio" id="role-none" name="role" value="0" checked>
-                <label for="role-none">No role</label>
-                <input type="radio" id="organizer" name="role" value="0">
-                <label for="organizer">Organizer</label>
-                <input type="radio" id="cook" name="role" value="10">
-                <label for="cook">Cook</label>
-                <input type="radio" id="barkeeper" name="role" value="20">
-                <label for="barkeeper">Barkeeper</label>
-                <input type="radio" id="helper" name="role" value="50">
-                <label for="helper">Helper</label>
-            </div>
-            <div>
-                <input type="submit" value="Next">
-            </div>
-        </form>
-    </div>
+    <main class="page-main">
+        <p class="error" style="display: none;">&nbsp;</p>
 
-    <div class="commitment commitment-low" style="display: none;">
-        <p>Thank you for your feedback.</p>
-        <p>How could this idea be approved?</p>
-        <form action="/spark/state">
-            <textarea name="alternative-suggestion" id="alternative-suggestion" cols="30" rows="10"></textarea>
-            <input type="submit" value="Next">
-        </form>
-    </div>
+        <div class="commitment commitment-high" style="display: none;">
+            <p><strong>That is great! How would you contribute to this cause?</strong></p>
+            <form action="/spark/state">
+                <div>
+                    <p>Make a donation:</p>
+                    <label class="commit-form-label" for="donate-none"><input type="radio" id="donate-none" name="donation" value="0" checked>No donation</label>
+                    <label class="commit-form-label" for="donate-some"><input type="radio" id="donate-some" name="donation" value="10">10 CHF</label>
+                    <label class="commit-form-label" for="donate-lots"><input type="radio" id="donate-lots" name="donation" value="20">30 CHF</label>
+                    <label class="commit-form-label" for="donate-huge"><input type="radio" id="donate-huge" name="donation" value="50">50 CHF</label>
+                </div>
+                <div>
+                    <p>Fill a role:</p>
+                    <label class="commit-form-label" for="role-none"><input type="radio" id="role-none" name="role" value="0" checked>No role</label>
+                    <label class="commit-form-label" for="organizer"><input type="radio" id="organizer" name="role" value="0">Organizer</label>
+                    <label class="commit-form-label" for="cook"><input type="radio" id="cook" name="role" value="10">Cook</label>
+                    <label class="commit-form-label" for="barkeeper"><input type="radio" id="barkeeper" name="role" value="20">Barkeeper</label>
+                    <label class="commit-form-label" for="helper"><input type="radio" id="helper" name="role" value="50">Helper</label>
+                </div>
+                <div>
+                    <input type="submit" class="button" value="Next">
+                </div>
+            </form>
+        </div>
+
+        <div class="commitment commitment-low" style="display: none;">
+            <p>Thank you for your feedback.</p>
+            <p>How could this idea be approved?</p>
+            <form action="/spark/state">
+                <textarea name="alternative-suggestion" id="alternative-suggestion" cols="30" rows="10"></textarea>
+                <input class="button" type="submit" value="Next">
+            </form>
+        </div>
+    </main>
+
+    <footer class="page-footer">
+        <small><a href="/">Bonfire.link Geneva</a><br>Made with ❤️ at <a href="http://theport.ch/">THE Port</a> Hackathon 2019.</small>
+    </footer>
+
     <script>
         let params, amount;
 
         try {
             params = new URLSearchParams(window.location.search);
             amount = parseInt(params.get("amount"));
-            console.log(amount);
 
             if (!amount && amount !== 0) {
                 throw new Error('Amount not defined.');

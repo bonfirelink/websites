@@ -40,12 +40,21 @@ canvas {
     background-image: url(header.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-
 }
+
+.page-header-collapsed {
+    width: 100%;
+    padding: 0 0 80% 0;
+    background-image: url(header-collapsed.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .page-main {
     margin-top: -120px;
     padding: 0 15px;
     max-width: 600px;
+    min-height: 600px;
 }
 
 .page-footer {
@@ -69,6 +78,7 @@ canvas {
     background-color: #007eff;
     padding: 15px;
     border-radius: 3px;
+    margin: 15px 0;
 }
 
 .button:disabled {
@@ -234,4 +244,12 @@ canvas {
 
 [type=range]:disabled::-webkit-slider-thumb, [type=range]:disabled::-moz-range-thumb, [type=range]:disabled::-ms-thumb, [type=range]:disabled::-webkit-slider-runnable-track, [type=range]:disabled::-ms-fill-lower, [type=range]:disabled::-ms-fill-upper {
     cursor: not-allowed;
+}
+
+/*
+ Commit Form label Component
+*/
+.commit-form-label {
+    display: block;
+    padding: 15px 0;
 }
