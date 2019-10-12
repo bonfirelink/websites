@@ -13,14 +13,19 @@ document.getElementById('commit-form').addEventListener('submit', function (e) {
         data: '', // Optional, but used for defining smart contract creation and interaction.
         chainId: 3 // Used to prevent transaction reuse across blockchains. Auto-filled by MetaMask.
     };
-    ethereum.enable();
-    ethereum.sendAsync({
-        method: 'eth_sendTransaction',
-        params: [transactionParameters],
-        from: ethereum.selectedAddress,
-    }, function () {
-        console.log("sent?");
-    });
+    try {
+        ethereum.enable();
+        ethereum.sendAsync({
+            method: 'eth_sendTransaction',
+            params: [transactionParameters],
+            from: ethereum.selectedAddress,
+        }, function () {
+            console.log("sent?");
+        });
+    }catch (e) {
+        console.error(e);
+    }
+
 });
 
 //GET bonfire mainnet multisig balance
