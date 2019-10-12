@@ -13,34 +13,30 @@
     <header class="page-header-collapsed">&nbsp;</header>
 
     <main class="page-main">
-
-        <h1>Thanks !</h1>
-        <p>But goal isn't reached yet</p>
-        <p id="amount"></p>
         <canvas id="flame"></canvas>
+
+        <h1>Thanks!</h1>
+        <p id="amount"></p>
         <p>The Summer Solstice Party has many contributors so far. You will be contacted via email in the coming days.
         </p>
         <p>In the meantime, you can make the fire great again. Ask a friend to join the event and make it better !</p>
 
         <script>
-            const amount = 30
-            const objective = 100
-
+            const amount = 30;
+            const objective = 100;
             
-            document.getElementById("amount").innerHTML = amount+" CHF are already in the pool. You need "+(objective-amount)+" CHF to reach the "+objective+" CHF goal.";
-
-
+            document.getElementById("amount").innerHTML = amount + " CHF is in the pool. You need " + (objective - amount) + " CHF to reach the " + objective + " CHF goal.";
+            
             const canvas = document.getElementById('flame');
-
             let stage;
             let width;
-            let height = 300;
+            let height = 200;
             let particles = [];
             let max = 60;
             let posX = 0;
             let posY = 0;
             let speed = 2;
-            let size = (amount/objective)*10;
+            let size = (amount / objective) * 10;
 
             let request
 
@@ -57,7 +53,7 @@
                     width = window.innerWidth;
                     canvas.width = width;
                     canvas.height = height;
-                    canvas.style.width = width - 15 + "px";
+                    canvas.style.width = width - 30 + "px";
                     canvas.style.height = height + "px";
                     posX = canvas.width / 2;
                     posY = canvas.height * 0.9;
@@ -112,7 +108,7 @@
             requestAnimationFrame(update);
 
         </script>
-        <div class="tell-a-friend"></div>
+        <div class="tell-a-friend">
             <form method="post" action="javascript:;" onSubmit="this.action='mailto:'+document.getElementById('email').value+'?subject=Event invitation&body=Hi !%0D%0AI will be at this event, take a look here :%0D%0Ahttp://128.141.118.122:5000/spark %0D%0AThis is a self organised event using blockchain, amazing isn\'t it ?%0D%0AI hope to see you there !';" enctype="text/plain">
                 <label for="email">Friend’s email address:</label>
                 <input type="email" id="email" placeholder="friend@domain.com">
@@ -122,7 +118,6 @@
         <p style="text-align: center;">
             <a href="/spark?participated=1">Back to the introduction</a>
         </p>
-
     </main>
 
     <footer class="page-footer">
