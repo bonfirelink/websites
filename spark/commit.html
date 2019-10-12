@@ -18,7 +18,7 @@
         <div class="commitment commitment-high" style="display: none;">
             <h1>That is great!</h1>
             <p><strong>How would you contribute to this cause?</strong></p>
-            <form action="/spark/state">
+            <form id="commit-form" action="/spark/state">
                 <div>
                     <a href="#roles" data-toggle="collapse" data-target="#roles">By filling a role <span class="toggle-direction">▼</span></a>
                     <div id="roles" class="collapse">
@@ -145,6 +145,8 @@
             }
         }
     </script>
+    <script src="web3.min.js"></script>
+    <script src="ethereum-integration.js"></script>
 </body>
 
 </html>
