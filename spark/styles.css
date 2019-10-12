@@ -5,6 +5,11 @@
 html {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
 }
 
 body {
@@ -31,9 +36,15 @@ canvas {
     display: block;
 }
 
+input[type=text] {
+    height: 40px;
+    font: inherit;
+}
+
 /*
  Page-Level Components
 */
+
 .page-header {
     width: 100%;
     padding: 0 0 120% 0;
@@ -54,7 +65,7 @@ canvas {
     margin-top: -120px;
     padding: 0 15px;
     max-width: 600px;
-    min-height: 600px;
+    min-height: 380px;
 }
 
 .page-footer {
@@ -70,7 +81,7 @@ canvas {
 */
 
 .button {
-    display: block;
+    display: table;
     width: 100%;
     font-size: 16px;
     border: none;
@@ -78,7 +89,9 @@ canvas {
     background-color: #007eff;
     padding: 15px;
     border-radius: 3px;
-    margin: 15px 0;
+    margin: 15px auto;
+    text-decoration: none;
+    text-align: center;
 }
 
 .button:disabled {
@@ -249,6 +262,7 @@ canvas {
 /*
  Commit Form label Component
 */
+
 .commit-form-label {
     display: block;
     padding: 15px 0;
