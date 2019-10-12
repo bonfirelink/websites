@@ -13,28 +13,29 @@
   <h1>Have a Party to celebrate Summer Solstice</h1>
   <p>Let us celebrate the summer solstice together again by going into nature, enjoying good food and drink, and
     dancing to great music.</p>
-  <img
-    src="https://images.unsplash.com/photo-1528243097678-739049bbf2e7?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;w=1200">
-  <img
-    src="https://images.unsplash.com/photo-1545128485-c400e7702796?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;w=1200">
+  <img src="https://images.unsplash.com/photo-1528243097678-739049bbf2e7?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;w=1200">
+  <img src="https://images.unsplash.com/photo-1545128485-c400e7702796?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;w=1200">
   <div id="commit" style="display: block;">
     <form action="/spark/commit">
-      <p>How much do you like this idea?</p>
+      <p>How passionate are you about this idea?</p>
       <canvas id="flame"></canvas>
       <div>
-        <input type="range" min="0" max="100" id="slider" />
+        <input type="range" min="0" max="100" id="range" />
       </div>
       <p class="range-description">
-        <small class="range-description-left">Hate</small>
-        <small class="range-description-right">Love</small>
+        <button type="button" id="range-none" class="range-description-button">Not at all passionate</button>
+        <button type="button" id="range-full" class="range-description-button">Very passionate</button>
       </p>
       <input type="hidden" name="amount" id="amount" value="100" />
       <input type="submit" value="Next">
     </form>
     <script>
       const canvas = document.getElementById('flame');
-      const slider = document.getElementById('slider');
+      const range = document.getElementById('range');
+      const rangeNone = document.getElementById('range-none');
+      const rangeFull = document.getElementById('range-full');
       const amount = document.getElementById('amount');
+
       let stage;
       let width;
       let height = 300;
@@ -44,6 +45,7 @@
       let posY = 0;
       let speed = 2;
       let size = 10;
+      let isFirstInteraction = true;
 
       let request;
 
@@ -70,6 +72,8 @@
 
       // Code adapted from: https://codepen.io/davepvm/pen/Hhstl
       function update() {
+        request = requestAnimationFrame(update)
+
         for (let i = 0; i < 10; i++) {
           let p = new Particle(posX, posY, (Math.random() * 2 * speed - speed) / 2, 0 - Math.random() * 2 * speed);
           particles.push(p);
@@ -94,35 +98,51 @@
         }
       }
 
-      slider.addEventListener('change', function () {
-        amount.value = slider.value;
+      function onRangeInput() {
+        size = range.value / 100 * 20;
+        speed = range.value > 50 ? 2 : 1;
+
+        // Only start the flame animation upon interaction
+        if (isFirstInteraction) {
+          requestAnimationFrame(update);
+          isFirstInteraction = false;
+        }
+      }
+
+      range.addEventListener('change', function () {
+        amount.value = range.value;
       });
 
-      slider.addEventListener('input', function () {
-        size = slider.value / 100 * 20;
-        speed = slider.value > 50 ? 2 : 1;
+      range.addEventListener('input', onRangeInput);
+
+      rangeFull.addEventListener('click', function() {
+          range.value = 100;
+          onRangeInput();
       });
 
-      resizeCanvas();
+      rangeFull.addEventListener('click', function() {
+          range.value = 100;
+          onRangeInput();
+      });
+
+      rangeNone.addEventListener('click', function() {
+          range.value = 0;
+          onRangeInput();
+      });
 
       const canvasSupported = canvas.getContext;
       if (canvasSupported) {
         stage = canvas.getContext("2d");
-
+        resizeCanvas();
+        
         // Makes the colors add onto each other, producing that nice white in the middle of the fire
         stage.globalCompositeOperation = "xor";
-
+        
         window.addEventListener("resize", function () {
           resizeCanvas();
         });
 
-        const performAnimation = function() {
-          request = requestAnimationFrame(performAnimation)
-          update();
-        }
-
-        requestAnimationFrame(performAnimation);
-        //cancelAnimationFrame(request) //stop the animation
+        cancelAnimationFrame(request);
       } else {
         canvas.parentNode.removeChild(canvas);
       }

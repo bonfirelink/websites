@@ -30,7 +30,12 @@ canvas {
     margin: 0 0 30px 0;
 }
 
-.range-description-right {
+.range-description-button {
+    border: none;
+    background: none;
+}
+
+.range-description-button:last-child {
     margin-left: auto;
 }
 
