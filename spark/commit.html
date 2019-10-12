@@ -15,32 +15,66 @@
         <p class="error" style="display: none;">&nbsp;</p>
 
         <div class="commitment commitment-high" style="display: none;">
-            <p><strong>That is great! How would you contribute to this cause?</strong></p>
+            <h1>That is great!</h1>
+            <p><strong>How would you contribute to this cause?</strong></p>
             <form action="/spark/state">
                 <div>
-                    <p>Make a donation:</p>
-                    <label class="commit-form-label" for="donate-none"><input type="radio" id="donate-none" name="donation" value="0" checked>No donation</label>
-                    <label class="commit-form-label" for="donate-some"><input type="radio" id="donate-some" name="donation" value="10">10 CHF</label>
-                    <label class="commit-form-label" for="donate-lots"><input type="radio" id="donate-lots" name="donation" value="20">30 CHF</label>
-                    <label class="commit-form-label" for="donate-huge"><input type="radio" id="donate-huge" name="donation" value="50">50 CHF</label>
+                    <a href="#roles" data-toggle="collapse" data-target="#roles">By filling a role ▼</a>
+                    <div id="roles" class="collapse">
+                        <p>The following roles are open:</p>
+                        <label class="commit-form-label" for="organizer"><input type="radio" id="organizer" name="role" value="organizer">Organizer</label>
+                        <label class="commit-form-label" for="cook"><input type="radio" id="cook" name="role" value="cook">Cook</label>
+                        <label class="commit-form-label" for="barkeeper"><input type="radio" id="barkeeper" name="role" value="barkeeper">Barkeeper</label>
+                        <label class="commit-form-label" for="helper"><input type="radio" id="helper" name="role" value="helper">Helper</label>
+                    </div>
                 </div>
                 <div>
-                    <p>Fill a role:</p>
-                    <label class="commit-form-label" for="role-none"><input type="radio" id="role-none" name="role" value="0" checked>No role</label>
-                    <label class="commit-form-label" for="organizer"><input type="radio" id="organizer" name="role" value="0">Organizer</label>
-                    <label class="commit-form-label" for="cook"><input type="radio" id="cook" name="role" value="10">Cook</label>
-                    <label class="commit-form-label" for="barkeeper"><input type="radio" id="barkeeper" name="role" value="20">Barkeeper</label>
-                    <label class="commit-form-label" for="helper"><input type="radio" id="helper" name="role" value="50">Helper</label>
+                    <a href="#donation" data-toggle="collapse" data-target="#donation">By making a donation ▼</a>
+                    <div id="donation" class="collapse">
+                        <label class="commit-form-label" for="donate-some"><input type="radio" id="donate-some" name="donation" value="10">10 CHF</label>
+                        <label class="commit-form-label" for="donate-lots"><input type="radio" id="donate-lots" name="donation" value="30">30 CHF</label>
+                        <label class="commit-form-label" for="donate-huge"><input type="radio" id="donate-huge" name="donation" value="50">50 CHF</label>
+                    </div>
                 </div>
+                <p>Make the Summer Solstice Party happen. Your contribution counts.</p>
                 <div>
                     <input type="submit" class="button" value="Next">
                 </div>
             </form>
+            <script>
+                function onToggleClick(event) {
+                    event.stopImmediatePropagation();
+                    event.preventDefault();
+                    const element = event.target;
+
+                    const selector = element.getAttribute('data-target');
+                    collapse(selector, 'toggle');
+                }
+
+                const rolesToggle = document.querySelector('[href="#roles"]');
+                rolesToggle.addEventListener('click', onToggleClick, false);
+
+                const donationToggle = document.querySelector('[href="#donation"]');
+                donationToggle.addEventListener('click', onToggleClick, false);
+
+                const map = {
+                    'toggle': 'toggle',
+                    'show': 'add',
+                    'hide': 'remove'
+                }
+
+                function collapse(selector, cmd) {
+                    const targets = Array.from(document.querySelectorAll(selector));
+                    targets.forEach(target => {
+                        target.classList[map[cmd]]('show');
+                    });
+                }
+            </script>
         </div>
 
         <div class="commitment commitment-low" style="display: none;">
-            <p>Thank you for your feedback.</p>
-            <p>How could this idea be approved?</p>
+            <p><strong>Thank you for your feedback.</strong></p>
+            <p>How could this idea be improved?</p>
             <form action="/spark/state">
                 <textarea name="alternative-suggestion" id="alternative-suggestion" cols="30" rows="10"></textarea>
                 <input class="button" type="submit" value="Next">
@@ -49,7 +83,7 @@
     </main>
 
     <footer class="page-footer">
-        <small><a href="/">Bonfire.link Geneva</a><br>Made with ❤️ at <a href="http://theport.ch/">THE Port</a> Hackathon 2019.</small>
+        <small><a href="/">Bonfire.link Geneva</a><br>Made with ❤️ at <a href="http://theport.ch/">THE Port</a> Hackathon 2019</small>
     </footer>
 
     <script>

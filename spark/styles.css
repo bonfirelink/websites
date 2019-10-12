@@ -18,14 +18,14 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
     background-color: #272822;
     color: white;
+
+    display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 a {
     color: #007eff;
-}
-
-h1 {
-    margin-top: 10px;
 }
 
 img {
@@ -50,7 +50,7 @@ input[type=text] {
     padding: 0 0 120% 0;
     background-image: url(header.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
 }
 
 .page-header-collapsed {
@@ -58,22 +58,43 @@ input[type=text] {
     padding: 0 0 80% 0;
     background-image: url(header-collapsed.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
 }
 
 .page-main {
     margin-top: -120px;
     padding: 0 15px;
     max-width: 600px;
-    min-height: 380px;
+    flex: 1;
 }
 
 .page-footer {
     background-color: #1e1f1a;
-    padding: 30px 15px;
+    padding: 10px 15px 30px 15px;
     margin-top: 30px;
     font-size: 14px;
     text-align: center;
+}
+
+.page-footer a {
+    color: white;
+}
+
+/*
+ Idea Description Component
+*/
+
+.idea-description-title {
+    margin-top: 10px;
+    line-height: 1.2;
+}
+
+.idea-description-text {
+    margin: 0 0 20px 0;
+}
+
+.idea-description-picture {
+    margin: 0 0 15px 0;
 }
 
 /*
@@ -106,7 +127,7 @@ input[type=text] {
     width: 100%;
     height: 340px;
     position: relative;
-    margin: -100px 0 100px 0;
+    margin: -100px 0 80px 0;
 }
 
 #commit .question {
@@ -266,4 +287,31 @@ input[type=text] {
 .commit-form-label {
     display: block;
     padding: 15px 0;
+}
+
+.commitment-low textarea {
+    width: 100%;
+    font: inherit;
+}
+
+/*
+ Collapse Component
+ */
+
+a[data-toggle="collapse"] {
+    text-decoration: none;
+    display: block;
+    height: 30px;
+}
+
+.collapse {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .5s cubic-bezier(0, 1, 0, 1);
+}
+
+.collapse.show {
+    max-height: 99em;
+    transition: max-height .5s ease-in-out;
 }
