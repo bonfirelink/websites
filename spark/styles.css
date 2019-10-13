@@ -352,4 +352,5 @@ a[data-toggle="collapse"] {
 .tell-a-friend input[type=submit], .tell-a-friend input[type=email] {
     vertical-align: middle;
     height: 40px;
+    margin: 6px 0;
 }

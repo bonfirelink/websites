@@ -23,7 +23,7 @@
                 
                 let amountElement = document.getElementById("amount");
                 if (amountElement !== null) {
-                    amountElement.innerHTML = amount + " CHF is in the pool. You need " + (objective - amount) + " CHF to reach the " + objective + " CHF goal.";
+                    amountElement.innerHTML = "There is <strong>" + amount + " CHF</strong> contributed so far. We need another " + (objective - amount) + " to reach the " + objective + " CHF goal.";
                 }
 
                 // Size of the flame based on the balance
@@ -114,15 +114,14 @@
 
     <main class="page-main">
         <h1>Thanks!</h1>
-        <p id="amount"></p>
-        <p>The Summer Solstice Party has many contributors so far. You will be contacted via email in the coming days.
-        </p>
-        <p>In the meantime, you can make the fire great again. Ask a friend to join the event and make it better !</p>
+        <p id="amount">The event has few contributors so far.</p>
+        <p>You will be contacted about the event in the coming days. In the meantime, ask a friend to join as well!</p>
         <div class="tell-a-friend">
             <form method="post" action="javascript:;" onSubmit="this.action='mailto:'+document.getElementById('email').value+'?subject=Event invitation&body=Hi !%0D%0AI will be at this event, take a look here :%0D%0Ahttp://128.141.118.122:5000/spark %0D%0AThis is a self organised event using blockchain, amazing isn\'t it ?%0D%0AI hope to see you there !';" enctype="text/plain">
                 <label for="email">Friend’s email address:</label>
                 <input type="email" id="email" placeholder="friend@domain.com">
-                <input type="submit" value="Tell a friend">
+                <input type="submit" value="Tell a friend"><br>
+                <small>(this will create an email for you to send)</small>
             </form>
         </div>
         <p style="text-align: center;">
