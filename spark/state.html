@@ -13,13 +13,10 @@
     <header class="page-header-flame">
         <canvas id="flame"></canvas>
         <script>
-            let size = 10;
+            let size = 0;
             
             window.updateBalance = function (balance) {
                 console.log('updateBalance', balance);
-                
-                // // Size of the flame based on the balance
-                // size = balance * 180;
 
                 // Convert the money value back to CHF using a hardcoded value.
                 let amount = Math.round(balance * 180);
@@ -30,10 +27,8 @@
                 }
 
                 // Size of the flame based on the balance
-                size = (objective / amount) * 10;
+                size = (objective / amount) * 2;
             }
-
-                
 
             const objective = 100;
             const canvas = document.getElementById('flame');
@@ -44,7 +39,7 @@
             let max = 60;
             let posX = 0;
             let posY = 0;
-            let speed = 2;
+            let speed = 1;
 
             let request
 
