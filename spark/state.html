@@ -18,8 +18,8 @@
             window.updateBalance = function (balance) {
                 console.log('updateBalance', balance);
                 
-                // Size of the flame based on the balance
-                size = balance * 180;
+                // // Size of the flame based on the balance
+                // size = balance * 180;
 
                 // Convert the money value back to CHF using a hardcoded value.
                 let amount = Math.round(balance * 180);
@@ -28,6 +28,9 @@
                 if (amountElement !== null) {
                     amountElement.innerHTML = amount + " CHF is in the pool. You need " + (objective - amount) + " CHF to reach the " + objective + " CHF goal.";
                 }
+
+                // Size of the flame based on the balance
+                size = (objective / amount) * 10;
             }
 
                 
