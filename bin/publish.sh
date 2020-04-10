@@ -1,4 +1,5 @@
 #!/bin/sh
+# Publish landing site to gh-pages branch
 # Source: https://gohugo.io/hosting-and-deployment/hosting-on-github/#put-it-into-a-script-1
 
 if [ "$(git status -s)" ]; then
@@ -6,23 +7,26 @@ if [ "$(git status -s)" ]; then
   exit 1;
 fi
 
-echo "Deleting old publication"
-rm -rf dist
-mkdir dist
+site="sites/landing"
+branch="gh-pages"
+
+echo "Deleting old publication..."
+rm -rf "${site}/dist"
+mkdir "${site}/dist"
 git worktree prune
 rm -rf .git/worktrees/dist/
 
-echo "Checking out gh-pages branch into dist"
-git worktree add -B gh-pages dist origin/gh-pages
+echo "Checking out gh-pages branch into site dist..."
+git worktree add -B "${branch}" "${site}/dist" "origin/${branch}"
 
-echo "Removing existing files"
-rm -rf dist/*
+echo "Removing existing files..."
+rm -rf "${site}/dist*"
 
-echo "Generating site"
-npm run build
+echo "Generating site..."
+cd "${site}" && npm run build
 
-echo "Updating gh-pages branch"
+echo "Commiting changes to gh-pages branch..."
 cd dist && git add --all && git commit -m "Publish to gh-pages (publish.sh)"
 
-echo "Pushing to github"
+echo "Pushing gh-pages branch..."
 git push
