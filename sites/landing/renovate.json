@@ -1,3 +1,1 @@
-{
-  "extends": ["github>netlify/renovate-config:netlify-cms-starter"]
-}
+../.common/renovate.json
