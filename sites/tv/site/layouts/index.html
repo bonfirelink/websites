@@ -1,0 +1,34 @@
+{{ define "main" }}
+<section class="hero is-fullheight has-background-fire">
+  <div class="hero-body">
+    <div class="container">
+      <video id="video" muted controls></video>
+    </div>
+  </div>
+  <div class="hero-footer">
+    {{ block "footer" . }}{{ partial "footer" . }}{{end}}
+  </div>
+</section>
+
+<script src="//cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script>
+  if(Hls.isSupported()) {
+    var video = document.getElementById('video');
+    var hls = new Hls();
+    hls.loadSource('//tv.bonfire.link/hls/simontv.m3u8');
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED,function() {
+      video.play();
+    });
+  } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    // hls.js is not supported on platforms that do not have Media Source Extensions (MSE) enabled.
+    // When the browser has built-in HLS support (check using `canPlayType`), we can provide an HLS manifest (i.e. .m3u8
+    // URL) directly to the video videoent throught the `src` property.
+    // This is using the built-in support of the plain video videoent, without using hls.js.
+    video.src = '//tv.bonfire.link/hls/simontv.m3u8';
+    video.addEventListener('canplay', function() {
+      video.play();
+    });
+  }
+</script>
+{{ end }}
