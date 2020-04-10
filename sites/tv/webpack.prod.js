@@ -1,0 +1,1 @@
+../.common/webpack.prod.js
