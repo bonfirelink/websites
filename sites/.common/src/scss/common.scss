@@ -1,0 +1,75 @@
+// color customizations
+$fire: #e51d47;
+$charcoal: #2e2e3a;
+$text: $charcoal;
+$link: $charcoal;
+$link-hover: $fire;
+
+// navbar customizations
+$navbar-background-color: $charcoal;
+$navbar-item-color: white;
+$navbar-item-hover-color: $fire;
+$navbar-item-hover-background-color: 'transparent';
+
+// typography customizations
+@font-face {
+  font-family: 'Do Hyeon';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/do-hyeon-v11-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Do Hyeon Regular'), local('DoHyeon-Regular'),
+       url('/fonts/do-hyeon-v11-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/fonts/do-hyeon-v11-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/fonts/do-hyeon-v11-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('/fonts/do-hyeon-v11-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/fonts/do-hyeon-v11-latin-regular.svg#DoHyeon') format('svg'); /* Legacy iOS */
+}
+
+$family-do-hyeon: 'Do Hyeon', sans-serif;
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $family-do-hyeon
+}
+
+a {
+  &:active {
+    top: 1px;
+  }
+}
+
+.has-text-fire {
+  color: $fire;
+}
+
+.has-background-fire {
+  background: $fire;
+}
+
+.has-text-charcoal {
+  color: $charcoal;
+}
+
+.has-background-charcoal {
+  background: $charcoal;
+}
+
+.navbar-brand {
+  align-items: center;
+
+  > .navbar-item {
+    font-family: 'Do Hyeon', sans-serif;
+    color: $fire;
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  > .navbar-burger:hover {
+    background-color: transparent;
+  }
+}
+
+footer {
+  padding: 1% 5%;
+}
