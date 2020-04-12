@@ -2,6 +2,8 @@
 # Publish landing site to gh-pages branch
 # Source: https://gohugo.io/hosting-and-deployment/hosting-on-github/#put-it-into-a-script-1
 
+set -e
+
 if [ "$(git status -s)" ]; then
   echo "The working directory is dirty. Please commit any pending changes."
   exit 1;
