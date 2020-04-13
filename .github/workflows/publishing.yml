@@ -10,14 +10,20 @@ env:
 
 jobs:
   setup:
+    name: setup:${{ matrix.site }}
     runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        site: [landing, tv]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/cache@v1
         id: cache
         with:
-          path: sites/landing/node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles('sites/landing/package-lock.json') }}
+          path: sites/${{ matrix.site }}/node_modules
+          # XXX: Cache will be invalidated any time that any site updates its packages
+          #      It's not ideal, but I haven't found any way to interpolate `${{ matrix.site }}` in `hashFiles(...)`
+          key: ${{ runner.os }}-npm-${{ matrix.site }}-${{ hashFiles('sites/**/package-lock.json') }}
       - uses: actions/setup-node@v1
         if: steps.cache.outputs.cache-hit != 'true'
         with:
@@ -25,16 +31,23 @@ jobs:
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          npm install
+          make install site=${{ matrix.site }}
   publish:
+    name: release:${{ matrix.site }}
     needs: setup
     runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        site: [landing, tv]
+    env:
+      dist_branch: dist/${{ matrix.site }}
+      tag_name: ${{ matrix.site }}-v1.0.0+latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/cache@v1
         with:
-          path: sites/landing/node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles('sites/landing/package-lock.json') }}
+          path: sites/${{ matrix.site }}/node_modules
+          key: ${{ runner.os }}-npm-${{ matrix.site }}-${{ hashFiles('sites/**/package-lock.json') }}
       - uses: actions/setup-node@v1
         with:
           node-version: 12.x
@@ -44,6 +57,11 @@ jobs:
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-      - name: Build and publish site
+      - name: Publish site to dist branch
         run: |
-          bin/publish.sh
+          make publish site=${{ matrix.site }}
+      - name: Republish landing site to gh-pages branch
+        if: matrix.site == 'landing'
+        run: |
+          cd sites/landing/dist
+          git push origin HEAD:gh-pages
