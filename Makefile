@@ -10,6 +10,10 @@ start: _check_site
 build: _check_site
 	cd sites/$(site) && npm run build
 
+.PHONY: publish
+publish: _check_site
+	bin/publish.sh -n $(site)
+
 .PHONY: list
 .SILENT: list
 list:
