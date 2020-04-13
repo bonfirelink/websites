@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta name="generator" content="Hugo 0.66.0" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <base href="/">
+  <title>bonfire.link TV - not propaganda</title>
+
+  
+  
+    <link href="/main.a415d.css" rel="stylesheet">
+  
+</head>
+
+<body>
+
+  <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item is-size-3 is-size-4-touch" href="https://bonfire.link">
+        bonfire.link
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+  
+<section class="hero is-fullheight has-background-fire">
+  <div class="hero-body">
+    <div class="container">
+      <video id="video" muted controls></video>
+    </div>
+  </div>
+  <div class="hero-footer">
+    <footer class="has-background-charcoal has-text-white has-text-weight-semibold has-text-centered">
+    <span>Made with 🔥by humans</span>
+</footer>
+
+  </div>
+</section>
+
+<script src="//cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script>
+  if(Hls.isSupported()) {
+    var video = document.getElementById('video');
+    var hls = new Hls();
+    hls.loadSource('//tv.bonfire.link/hls/simontv.m3u8');
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED,function() {
+      video.play();
+    });
+  } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    
+    
+    
+    
+    video.src = '//tv.bonfire.link/hls/simontv.m3u8';
+    video.addEventListener('canplay', function() {
+      video.play();
+    });
+  }
+</script>
+
+
+  
+  
+    <script src="/main.a415d.js"></script>
+  
+</body>
+
+</html>
