@@ -12,21 +12,23 @@
 
 <script src="//cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <script>
-  if(Hls.isSupported()) {
-    var video = document.getElementById('video');
+  var video = document.getElementById("video");
+  var videoSrc = "//tv.bonfire.link/hls/simontv.m3u8";
+  if (Hls.isSupported()) {
     var hls = new Hls();
-    hls.loadSource('//tv.bonfire.link/hls/simontv.m3u8');
+    hls.loadSource(videoSrc);
     hls.attachMedia(video);
-    hls.on(Hls.Events.MANIFEST_PARSED,function() {
+    hls.on(Hls.Events.MANIFEST_PARSED, function () {
       video.play();
     });
-  } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+  } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
     // hls.js is not supported on platforms that do not have Media Source Extensions (MSE) enabled.
     // When the browser has built-in HLS support (check using `canPlayType`), we can provide an HLS manifest (i.e. .m3u8
     // URL) directly to the video videoent throught the `src` property.
     // This is using the built-in support of the plain video videoent, without using hls.js.
-    video.src = '//tv.bonfire.link/hls/simontv.m3u8';
-    video.addEventListener('canplay', function() {
+    video.src = videoSrc;
+    video.setAttribute("playsinline", "true");
+    video.addEventListener("loadedmetadata", function () {
       video.play();
     });
   }
