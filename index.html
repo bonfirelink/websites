@@ -28,7 +28,7 @@
 
 
   
-<section class="hero is-fullheight has-background-fire">
+<section class="hero is-fullheight">
   <div class="hero-body">
     <div class="container">
       <video id="video" muted controls></video>
@@ -44,21 +44,23 @@
 
 <script src="//cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <script>
-  if(Hls.isSupported()) {
-    var video = document.getElementById('video');
+  var video = document.getElementById("video");
+  var videoSrc = "//tv.bonfire.link/hls/simontv.m3u8";
+  if (Hls.isSupported()) {
     var hls = new Hls();
-    hls.loadSource('//tv.bonfire.link/hls/simontv.m3u8');
+    hls.loadSource(videoSrc);
     hls.attachMedia(video);
-    hls.on(Hls.Events.MANIFEST_PARSED,function() {
+    hls.on(Hls.Events.MANIFEST_PARSED, function () {
       video.play();
     });
-  } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+  } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
     
     
     
     
-    video.src = '//tv.bonfire.link/hls/simontv.m3u8';
-    video.addEventListener('canplay', function() {
+    video.src = videoSrc;
+    video.setAttribute("playsinline", "true");
+    video.addEventListener("loadedmetadata", function () {
       video.play();
     });
   }
