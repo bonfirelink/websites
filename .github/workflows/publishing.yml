@@ -59,7 +59,7 @@ jobs:
           git config --local user.name "GitHub Action"
       - name: Publish site to dist branch
         run: |
-          make publish site=${{ matrix.site }}
+          bin/publish.sh ${{ matrix.site }}
       - name: Republish landing site to gh-pages branch
         if: matrix.site == 'landing'
         run: |

@@ -16,6 +16,8 @@ publish_site() {
 
   site_path="sites/${site_name}"
   site_branch="dist/${site_name}"
+  # TODO: Adapt this when introducing versioning, reusing for now the same tag
+  tag_name="${site_name}/v1.0.0-latest"
   git_ref=$(git rev-parse --short=7 HEAD)
 
   echo "Deleting old static site files..."
@@ -41,12 +43,13 @@ publish_site() {
   git add --all
   # Commit only if there are changes, otherwise `git commit` exits with 1 and stops the show
   git diff-index --quiet HEAD || git commit -m "Publish ${site_name} site from ${git_ref}"
-  # TODO: Adapt this when introducing versioning, reusing for now the same tag
-  git tag --force -m 'Mysterious transformations' "${site_name}/v1.0.0-latest"
+  git tag --force -m 'Mysterious transformations' "${tag_name}"
 
   if [ ! "${dry_run}" = true ]; then
     echo "Pushing branch and tag to remote..."
-    git push --tags --force
+    git push
+    # TODO: remove --force once tag names are properly versioned
+    git push --force origin "${tag_name}"
   fi
 }
 
