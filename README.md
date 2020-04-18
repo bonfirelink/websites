@@ -23,7 +23,7 @@ Before getting started, you will need:
 First, to clone this repo, run:
 
 ```git
-git clone git@github.com:bonfirelink/website.git
+git clone git@github.com:bonfirelink/websites.git
 ```
 
 Once cloned, to list all available sites, run:
