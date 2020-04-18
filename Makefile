@@ -6,6 +6,10 @@ install: _check_site
 start: _check_site
 	cd sites/$(site) && npm start
 
+.PHONY: test
+test: _check_site
+	cd sites/$(site) && npm run test
+
 .PHONY: build
 build: _check_site
 	cd sites/$(site) && npm run build
