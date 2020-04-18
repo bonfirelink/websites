@@ -44,6 +44,12 @@ To start the site locally, run:
 make start site=<site>
 ```
 
+Or to start multiple sites, specify different port values:
+
+```sh
+PORT=3001 make start site=<site>
+```
+
 To build a static version of the site inside the site's `dist/` subdirectory, run:
 
 ```sh
