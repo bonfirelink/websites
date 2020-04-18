@@ -17,7 +17,7 @@ publish: _check_site
 .PHONY: list
 .SILENT: list
 list:
-	tree sites --noreport -L 1 | grep --invert-match common
+	ls -1 sites | sed 's#/##'
 
 .PHONY: _check_site
 .SILENT: _check_site
