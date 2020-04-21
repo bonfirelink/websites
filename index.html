@@ -32,6 +32,18 @@
   <div class="hero-body">
     <div class="container">
       <video id="video" muted controls></video>
+      <div class="field is-grouped">
+        <div class="control is-expanded">
+          <input id="beggar-addr" class="input" type="text" placeholder="Punch an Ethereum address...">
+          <p class="help">
+            Psst! Hey punk, do you want some
+            <a href="http://bullshit.money" style="text-decoration: underline;">bullshit</a>?
+          </p>
+        </div>
+        <div class="control">
+          <button id="beg-button" class="button is-danger">beg</button>
+        </div>
+      </div>
     </div>
   </div>
   <div class="hero-footer">
@@ -43,6 +55,7 @@
 </section>
 
 <script src="//cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script src="//cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
 <script>
   var video = document.getElementById("video");
   var videoSrc = "//tv.bonfire.link/hls/simontv.m3u8";
@@ -64,6 +77,31 @@
       video.play();
     });
   }
+
+  document.addEventListener('click', function(event) {
+    
+    if (!event.target.matches('#beg-button')) return;
+    input = document.getElementById('beggar-addr');
+    var addr = input.value
+    if (web3.isAddress(addr)) {
+      var xhr = new XMLHttpRequest();
+      var params = JSON.stringify({recipient_address: addr});
+      xhr.onload = function() {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          tx_url = 'https://etherscan.io/tx/' + xhr.response.tx_hash;
+          alert('The bullshit samaritan sent some BSH, check it out: ' + tx_url);
+        } else {
+          alert('The bullshit samaritan sent nothing, please direct your complaints to: notacult@bonfire.link');
+        }
+      }
+      xhr.open('POST', '//bs-samaritan.bonfire.link/begs');
+      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhr.responseType = 'json';
+      xhr.send(params);
+    } else {
+      alert("That doesn't look like an Ethereum address.");
+    }
+  }, false);
 </script>
 
 
