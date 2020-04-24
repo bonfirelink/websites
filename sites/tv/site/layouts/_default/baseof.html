@@ -19,6 +19,11 @@
 
   {{ block "main" . }}{{end}}
 
+  {{ if not .IsHome }}
+    <!-- Footer in home page is directly added inside the hero -->
+    {{ block "footer" . }}{{ partial "footer" . }}{{end}}
+  {{ end }}
+
   {{ $script := .Site.Data.webpack.main }}
   {{ with $script.js }}
     <script src="{{ relURL . }}"></script>

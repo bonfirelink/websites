@@ -73,3 +73,12 @@ a {
 footer {
   padding: 1% 5%;
 }
+
+.hero.is-fullheight.is-not-fullheight {
+  min-height: 95vh;
+}
+
+.container.has-flex-align-items-center {
+  display: flex;
+  align-items: center;
+}
