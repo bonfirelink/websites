@@ -54,6 +54,10 @@ a {
   background: $charcoal;
 }
 
+.is-vcentered {
+  align-items: center;
+}
+
 .navbar-brand {
   align-items: center;
 
@@ -77,9 +81,4 @@ footer {
 
 .hero.is-fullheight.is-not-fullheight {
   min-height: 95vh;
-}
-
-.container.has-flex-align-items-center {
-  display: flex;
-  align-items: center;
 }
