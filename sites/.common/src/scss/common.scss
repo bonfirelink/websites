@@ -12,6 +12,11 @@ $navbar-item-color: white;
 $navbar-item-hover-color: $fire;
 $navbar-item-hover-background-color: 'transparent';
 
+// progress customizations
+.progress.is-smallest {
+  height: 0.25rem;
+}
+
 // typography customizations
 @font-face {
   font-family: 'Do Hyeon';
