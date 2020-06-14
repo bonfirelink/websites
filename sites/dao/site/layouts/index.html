@@ -1,0 +1,36 @@
+{{ define "main" }}
+<section class="hero has-columns is-fullheight">
+  <div class="hero-body has-background-fire">
+    <div class="container is-size-5 is-italic">
+      <div class="columns is-variable is-6 is-vcentered is-centered has-text-centered has-text-white">
+        <div class="column is-3">
+          on the 6th month of the year<br/>
+          on the 6th day of that month<br/>
+          on the 6th night of the week<br/>
+          at the cold hands of machines<br/>
+          gods of paper came to die.
+        </div>
+        <div class="column is-4">
+          shadows dreamt of endless fire<br/>
+          amidst smoke and broken light<br/>
+          idols chained into existence<br/>
+          now awaiting sacrifice.
+        </div>
+        <div class="column is-3">
+          fearful soul, be so no longer<br/>
+          as in darkness you shall thrive<br/>
+          and rejoice in such a pleasure<br/>
+          that it is to keep your secrets<br/>
+          and in ether sin ablaze.
+        </div>
+      </div>
+      <div class="progress-container is-flex">
+        <progress id="progress" class="progress is-smallest is-danger" value="0"></progress>
+      </div>
+    </div>
+  </div>
+  <div class="hero-footer">
+    {{ block "footer" . }}{{ partial "footer" . }}{{end}}
+  </div>
+</section>
+{{ end }}
