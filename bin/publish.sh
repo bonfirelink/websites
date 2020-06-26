@@ -104,12 +104,12 @@ fi
 
 # Prevent building partial sites
 if [ "$1" = '.common' ]; then
-  echo "error: site .common cannot be published"
+  echo "error: site '.common' cannot be published"
   exit 1
 fi
 
 if [ ! -d "sites/$1" ]; then
-  echo "error: site $1 doesn't exist"
+  echo "error: site '$1' doesn't exist"
   exit 1
 fi
 
