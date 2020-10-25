@@ -1,0 +1,49 @@
+// Bulma navbar customizations
+// docs: https://bulma.io/documentation/components/navbar
+
+$navbar-height: 4rem;
+$navbar-background-color: $charcoal;
+$navbar-item-color: white;
+$navbar-item-hover-color: white;
+$navbar-item-hover-background-color: 'transparent';
+
+@mixin after-dot($color: inherit) {
+  &:after {
+    content: '.';
+    color: $color;
+    position: absolute;
+    right: 0.4rem;
+  }
+}
+
+.navbar {
+  font-family: $family-do-hyeon;
+}
+
+.navbar-brand {
+  // simulates `after-dot($fire)` from `.navbar-menu`
+  .navbar-item:hover span {
+    color: $fire;
+  }
+
+  > .navbar-burger:hover {
+    background-color: transparent;
+  }
+}
+
+.navbar-menu .navbar-item {
+  &:hover {
+    @include after-dot($fire);
+  }
+
+  &.is-current-section {
+    @include after-dot();
+  }
+}
+
+.navbar-item.is-current-section {
+  // override $navbar-item-hover-color in all cases
+  &, &:focus, &:focus-within, &:hover, &.is-active {
+    color: $fire;
+  }
+}
