@@ -5,23 +5,6 @@
   mix-blend-mode: difference;
 }
 
-.navbar-brand {
-  align-items: center;
-
-  > .navbar-item {
-    font-family: 'Do Hyeon', sans-serif;
-    color: $fire;
-
-    &:hover {
-      color: $white;
-    }
-  }
-
-  > .navbar-burger:hover {
-    background-color: transparent;
-  }
-}
-
 .hero-video {
   max-height: inherit;
   z-index: -1;

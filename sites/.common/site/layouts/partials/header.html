@@ -1,9 +1,23 @@
+{{ $currentSection := .CurrentSection }}
+{{ $isCurrentPageHome := eq .RelPermalink "/" }}
+<!-- css docs: https://bulma.io/documentation/components/navbar -->
 <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
   <div class="container">
-    <div class="navbar-brand">
-      <a class="navbar-item is-size-3 is-size-4-touch" href="https://bonfire.link">
-        bonfire.link
+    <div class="navbar-brand is-size-3 is-size-4-touch">
+      <a class="navbar-item {{- if $isCurrentPageHome }} is-current-section{{ end }}" href="/">
+        bonfire<span>.</span>link
       </a>
+    </div>
+    <div class="navbar-menu is-size-4 is-size-5-touch">
+      <div class="navbar-start">
+        {{ range .Site.Sections }}
+          {{ $isCurrentSection := eq $currentSection.RelPermalink .RelPermalink }}
+          <a class="navbar-item {{- if $isCurrentSection }} is-current-section{{ end }}" style="top: 3px"
+             href="{{ .RelPermalink }}">
+            {{ .Title }}
+          </a>
+        {{ end }}
+      </div>
     </div>
   </div>
 </nav>

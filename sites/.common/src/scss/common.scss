@@ -1,3 +1,5 @@
+// -- vars ---------------------------------------------------------------------
+
 // color customizations
 $fire: #e51d47;
 $charcoal: #2e2e3a;
@@ -5,12 +7,6 @@ $text: $charcoal;
 $link: $charcoal;
 $link-hover: $fire;
 $danger: $fire;
-
-// navbar customizations
-$navbar-background-color: $charcoal;
-$navbar-item-color: white;
-$navbar-item-hover-color: $fire;
-$navbar-item-hover-background-color: 'transparent';
 
 // progress customizations
 .progress.is-smallest {
@@ -33,14 +29,19 @@ $navbar-item-hover-background-color: 'transparent';
 
 $family-do-hyeon: 'Do Hyeon', sans-serif;
 
+// -- imports ------------------------------------------------------------------
+//
+//    Imports go after defining vars so that colors and font family are
+//    available in imported files.
+
+@import "navbar";
+
+// -- common stuff -------------------------------------------------------------
+//
+//    Stuff that is too early to over-engineer.
+
 h1, h2, h3, h4, h5, h6 {
   font-family: $family-do-hyeon
-}
-
-a {
-  &:active {
-    top: 1px;
-  }
 }
 
 .has-text-fire {
@@ -61,23 +62,6 @@ a {
 
 .is-vcentered {
   align-items: center;
-}
-
-.navbar-brand {
-  align-items: center;
-
-  > .navbar-item {
-    font-family: 'Do Hyeon', sans-serif;
-    color: $fire;
-
-    &:hover {
-      color: white;
-    }
-  }
-
-  > .navbar-burger:hover {
-    background-color: transparent;
-  }
 }
 
 footer {
