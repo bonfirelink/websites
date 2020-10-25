@@ -68,6 +68,7 @@ footer {
   padding: 1% 5%;
 }
 
-.hero.is-fullheight.is-not-fullheight {
-  min-height: 95vh;
+.hero.is-fullheight.is-not-fullheight,
+.hero.is-fullheight-with-navbar.is-not-fullheight {
+  min-height: calc(100vh - #{$navbar-height} - 3rem);
 }
