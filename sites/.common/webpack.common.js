@@ -18,21 +18,31 @@ module.exports = {
       {
         test: /\.((png)|(eot)|(woff)|(woff2)|(ttf)|(svg)|(gif))(\?v=\d+\.\d+\.\d+)?$/,
         loader: "file-loader?name=/[hash].[ext]"
-      },
-
-      {test: /\.json$/, loader: "json-loader"},
-
-      {
+      }, {
+        test: /\.json$/,
+        loader: "json-loader"
+      }, {
         loader: "babel-loader",
         test: /\.js?$/,
         exclude: /node_modules/,
         query: {cacheDirectory: true}
-      },
-
-      {
+      }, {
         test: /\.(sa|sc|c)ss$/,
         exclude: /node_modules/,
-        use: ["style-loader", MiniCssExtractPlugin.loader, "css-loader", "postcss-loader", "sass-loader"]
+        use: [
+          "style-loader",
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {sourceMap: true}
+          }, {
+            loader: "postcss-loader",
+            options: {sourceMap: true}
+          }, {
+            loader: "sass-loader",
+            options: {sourceMap: true}
+          }
+        ]
       }
     ]
   },
@@ -41,13 +51,11 @@ module.exports = {
     new webpack.ProvidePlugin({
       fetch: "imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch"
     }),
-
     new AssetsPlugin({
       filename: "webpack.json",
       path: path.join(process.cwd(), "site/data"),
       prettyPrint: true
     }),
-
     new CopyWebpackPlugin([
       {
         from: "./src/fonts/",
