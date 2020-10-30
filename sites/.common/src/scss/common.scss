@@ -1,19 +1,8 @@
-// -- vars ---------------------------------------------------------------------
+// -- project vars -------------------------------------------------------------
 
-// color customizations
 $fire: #e51d47;
 $charcoal: #2e2e3a;
-$text: $charcoal;
-$link: $charcoal;
-$link-hover: $fire;
-$danger: $fire;
 
-// progress customizations
-.progress.is-smallest {
-  height: 0.25rem;
-}
-
-// typography customizations
 @font-face {
   font-family: 'Do Hyeon';
   font-style: normal;
@@ -29,19 +18,35 @@ $danger: $fire;
 
 $family-do-hyeon: 'Do Hyeon', sans-serif;
 
-// -- imports ------------------------------------------------------------------
-//
-//    Imports go after defining vars so that colors and font family are
-//    available in imported files.
+// -- bulma vars ---------------------------------------------------------------
+
+// doc: https://bulma.io/documentation/customize/variables/
+$text: $charcoal;
+$link: $charcoal;
+$link-hover: $fire;
+$danger: $fire;
+
+// doc: https://bulma.io/documentation/components/navbar
+$navbar-height: 4rem;
+$navbar-background-color: $charcoal;
+$navbar-item-color: white;
+$navbar-item-hover-color: white;
+$navbar-item-hover-background-color: 'transparent';
+
+// -- partials -----------------------------------------------------------------
+//    imports go after defining vars so that they available in partials.
 
 @import "navbar";
 
 // -- common stuff -------------------------------------------------------------
-//
-//    Stuff that is too early to over-engineer.
+//    stuff that is too early to over-engineer.
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $family-do-hyeon
+}
+
+footer {
+  padding: 1% 5%;
 }
 
 .has-text-fire {
@@ -64,11 +69,13 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
 }
 
-footer {
-  padding: 1% 5%;
-}
-
 .hero.is-fullheight.is-not-fullheight,
 .hero.is-fullheight-with-navbar.is-not-fullheight {
   min-height: calc(100vh - #{$navbar-height} - 3rem);
+}
+
+// progress customizations
+// docs: https://bulma.io/documentation/elements/progress/
+.progress.is-smallest {
+  height: 0.25rem;
 }
