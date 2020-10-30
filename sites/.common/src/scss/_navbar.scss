@@ -1,12 +1,6 @@
 // Bulma navbar customizations
 // docs: https://bulma.io/documentation/components/navbar
 
-$navbar-height: 4rem;
-$navbar-background-color: $charcoal;
-$navbar-item-color: white;
-$navbar-item-hover-color: white;
-$navbar-item-hover-background-color: 'transparent';
-
 @mixin after-dot($color: inherit) {
   &:after {
     content: '.';
