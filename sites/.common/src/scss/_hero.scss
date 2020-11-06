@@ -1,0 +1,33 @@
+// Bulma hero customizations
+// docs: https://bulma.io/documentation/layout/hero/
+
+.hero.is-fullheight,
+.hero.is-fullheight-with-navbar {
+  &.is-almost-fullheight {
+    min-height: calc(100vh - #{$navbar-height} - 3rem);
+  }
+}
+
+.hero.has-columns .columns {
+  margin: 2rem;
+}
+
+// -- hero-related elements ----------------------------------------------------
+
+.hero-video {
+  max-height: inherit;
+  z-index: -1;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.hero-separator {
+  width: 45vh;
+  height: 0.2rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}

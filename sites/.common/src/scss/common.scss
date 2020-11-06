@@ -36,6 +36,7 @@ $navbar-item-hover-background-color: 'transparent';
 // -- partials -----------------------------------------------------------------
 //    imports go after defining vars so that they available in partials.
 
+@import "hero";
 @import "navbar";
 
 // -- common stuff -------------------------------------------------------------
@@ -67,11 +68,6 @@ footer {
 
 .is-vcentered {
   align-items: center;
-}
-
-.hero.is-fullheight.is-not-fullheight,
-.hero.is-fullheight-with-navbar.is-not-fullheight {
-  min-height: calc(100vh - #{$navbar-height} - 3rem);
 }
 
 // progress customizations
