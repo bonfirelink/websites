@@ -1,0 +1,8 @@
+<div class="box is-date-box {{ .classes }}">
+  <div>
+    {{ lower (.date.Format "Mon") }} {{ .date.Format "02" }}
+  </div>
+  <div>
+    {{ lower (.date.Format "Jan") }} {{ .date.Format "2006" }}
+  </div>
+</div>

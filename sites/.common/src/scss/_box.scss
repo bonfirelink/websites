@@ -1,0 +1,35 @@
+// Bulma box customizations
+// doc: https://bulma.io/documentation/elements/box/
+
+$date-box-size: 5.5rem;
+$date-box-size-large: 6.5rem;
+
+.box.is-date-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: $charcoal;
+  color: white;
+  font-family: $family-do-hyeon;
+
+  height: $date-box-size;
+  width: $date-box-size;
+
+  line-height: 1.25rem;
+  padding: 0.5rem;
+
+  // fail gracefully if text is too long
+  white-space: nowrap;
+  overflow: hidden;
+
+  &:hover {
+    color: $fire;
+  }
+}
+
+.box.is-date-box.is-large {
+  height: $date-box-size-large;
+  width: $date-box-size-large;
+}
