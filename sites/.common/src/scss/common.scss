@@ -27,6 +27,15 @@ $navbar-item-color: white;
 $navbar-item-hover-color: white;
 $navbar-item-hover-background-color: 'transparent';
 
+// doc: https://bulma.io/documentation/elements/box/
+$box-padding: 2rem;
+
+// doc: https://bulma.io/documentation/elements/title
+$title-family: $family-do-hyeon;
+$title-color: $fire;
+$title-weight: 400;
+$subtitle-color: $charcoal;
+
 // -- mixins -------------------------------------------------------------------
 
 @import "mixins";
@@ -43,6 +52,15 @@ $navbar-item-hover-background-color: 'transparent';
 
 // -- common stuff -------------------------------------------------------------
 //    stuff that is too early to over-engineer.
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $family-do-hyeon
@@ -64,4 +82,12 @@ footer {
 // docs: https://bulma.io/documentation/elements/progress/
 .progress.is-smallest {
   height: 0.25rem;
+}
+
+.columns.has-no-vmargin {
+  margin-top: 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }

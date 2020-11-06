@@ -12,6 +12,21 @@
   margin: 2rem;
 }
 
+.hero.has-media-background {
+  // set `background-image: url(...);` somewhere else
+  background-position: center;
+  background-size: cover;
+
+  .hero-body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5));
+  }
+
+  .title,
+  .subtitle {
+    color: white;
+  }
+}
+
 // -- hero-related elements ----------------------------------------------------
 
 .hero-video {

@@ -16,7 +16,22 @@
   }
 }
 
-// specifity fixes
-.hero .subtitle {
-  color: $fire;
+// ugly selector to trigger `after-dot` in adjacent `.box.is-list-item h3 a` on hover
+.contains-date-box {
+  &:hover ~ .contains-section-list-item {
+    h3 a {
+      position: relative;
+      @include after-dot($fire, -0.3rem);
+    }
+  }
+}
+
+.box.is-list-item {
+  min-height: $date-box-size;
+
+  h3 a:hover {
+    color: inherit;
+    position: relative;
+    @include after-dot(-0.3rem, $fire);
+  }
 }
