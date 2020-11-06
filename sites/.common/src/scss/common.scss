@@ -16,6 +16,10 @@ $danger: $fire;
 // fonts
 $family-sans-serif: $family-open-sans;
 
+// doc: https://bulma.io/documentation/customize/variables/
+$radius: 3px;
+$radius-large: 4px;
+
 // doc: https://bulma.io/documentation/components/navbar
 $navbar-height: 4rem;
 $navbar-background-color: $charcoal;
@@ -31,6 +35,7 @@ $navbar-item-hover-background-color: 'transparent';
 //    import partials after defining vars/mixins so that they are available in
 //    partials.
 
+@import "box";
 @import "color";
 @import "fontface";
 @import "hero";
@@ -45,6 +50,10 @@ h1, h2, h3, h4, h5, h6 {
 
 footer {
   padding: 1% 5%;
+}
+
+.is-family-do-hyeon {
+  font-family: $family-do-hyeon;
 }
 
 .is-vcentered {
