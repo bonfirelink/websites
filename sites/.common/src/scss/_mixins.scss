@@ -1,0 +1,8 @@
+@mixin after-dot($right, $color: inherit) {
+  &:after {
+    content: '.';
+    color: $color;
+    position: absolute;
+    right: $right;
+  }
+}
