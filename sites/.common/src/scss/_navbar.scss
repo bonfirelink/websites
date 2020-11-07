@@ -1,15 +1,6 @@
 // Bulma navbar customizations
 // docs: https://bulma.io/documentation/components/navbar
 
-@mixin after-dot($color: inherit) {
-  &:after {
-    content: '.';
-    color: $color;
-    position: absolute;
-    right: 0.4rem;
-  }
-}
-
 .navbar {
   font-family: $family-do-hyeon;
 }
@@ -27,11 +18,11 @@
 
 .navbar-menu .navbar-item {
   &:hover {
-    @include after-dot($fire);
+    @include after-dot(0.4rem, $fire);
   }
 
   &.is-current-section {
-    @include after-dot();
+    @include after-dot(0.4rem);
   }
 }
 

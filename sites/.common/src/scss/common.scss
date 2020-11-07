@@ -33,8 +33,13 @@ $navbar-item-color: white;
 $navbar-item-hover-color: white;
 $navbar-item-hover-background-color: 'transparent';
 
+// -- mixins -------------------------------------------------------------------
+
+@import "mixins";
+
 // -- partials -----------------------------------------------------------------
-//    imports go after defining vars so that they available in partials.
+//    import partials after defining vars/mixins so that they are available in
+//    partials.
 
 @import "hero";
 @import "navbar";
