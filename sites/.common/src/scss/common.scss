@@ -41,6 +41,7 @@ $navbar-item-hover-background-color: 'transparent';
 //    import partials after defining vars/mixins so that they are available in
 //    partials.
 
+@import "color";
 @import "hero";
 @import "navbar";
 
@@ -53,22 +54,6 @@ h1, h2, h3, h4, h5, h6 {
 
 footer {
   padding: 1% 5%;
-}
-
-.has-text-fire {
-  color: $fire;
-}
-
-.has-background-fire {
-  background: $fire;
-}
-
-.has-text-charcoal {
-  color: $charcoal;
-}
-
-.has-background-charcoal {
-  background: $charcoal;
 }
 
 .is-vcentered {
