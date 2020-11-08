@@ -35,3 +35,12 @@
     @include after-dot(-0.3rem, $fire);
   }
 }
+
+.article {
+  line-height: 32px;
+  font-size: 1.2rem;
+}
+
+.mr-2rem {
+  margin-right: 2rem;
+}
