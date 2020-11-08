@@ -70,6 +70,10 @@ footer {
   padding: 1% 5%;
 }
 
+p + p {
+  margin-top: 1rem;
+}
+
 .is-family-do-hyeon {
   font-family: $family-do-hyeon;
 }
