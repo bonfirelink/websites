@@ -2,29 +2,19 @@
 
 $fire: #e51d47;
 $charcoal: #2e2e3a;
-
-@font-face {
-  font-family: 'Do Hyeon';
-  font-style: normal;
-  font-weight: 400;
-  src: url('/fonts/do-hyeon-v11-latin-regular.eot'); /* IE9 Compat Modes */
-  src: local('Do Hyeon Regular'), local('DoHyeon-Regular'),
-       url('/fonts/do-hyeon-v11-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('/fonts/do-hyeon-v11-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-       url('/fonts/do-hyeon-v11-latin-regular.woff') format('woff'), /* Modern Browsers */
-       url('/fonts/do-hyeon-v11-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('/fonts/do-hyeon-v11-latin-regular.svg#DoHyeon') format('svg'); /* Legacy iOS */
-}
-
+$family-open-sans: 'Open Sans', sans-serif;
 $family-do-hyeon: 'Do Hyeon', sans-serif;
 
 // -- bulma vars ---------------------------------------------------------------
 
 // doc: https://bulma.io/documentation/customize/variables/
+// colors
 $text: $charcoal;
 $link: $charcoal;
 $link-hover: $fire;
 $danger: $fire;
+// fonts
+$family-sans-serif: $family-open-sans;
 
 // doc: https://bulma.io/documentation/components/navbar
 $navbar-height: 4rem;
@@ -42,6 +32,7 @@ $navbar-item-hover-background-color: 'transparent';
 //    partials.
 
 @import "color";
+@import "fontface";
 @import "hero";
 @import "navbar";
 
