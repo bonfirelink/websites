@@ -1,5 +1,5 @@
 {{ define "main" }}
-<section class="hero has-columns is-fullheight-with-navbar">
+<section class="hero has-columns is-fullheight-with-navbar has-footer-peek">
   <div class="hero-body has-background-fire">
     <div class="container is-size-5 is-italic">
       <div class="columns is-variable is-6 is-vcentered is-centered has-text-centered has-text-white">
@@ -28,9 +28,6 @@
         <progress id="progress" class="progress is-smallest is-danger" value="0"></progress>
       </div>
     </div>
-  </div>
-  <div class="hero-footer">
-    {{ block "footer" . }}{{ partial "footer" . }}{{end}}
   </div>
 </section>
 {{ end }}

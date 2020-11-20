@@ -5,6 +5,10 @@ $charcoal: #2e2e3a;
 $family-open-sans: 'Open Sans', sans-serif;
 $family-do-hyeon: 'Do Hyeon', sans-serif;
 
+// the height a full height hero doesn't take at the bottom of the viewport,
+// letting see the peek of the next section or the `.footer-peek`
+$fh-hero-peek-height: 3rem;
+
 // -- bulma vars ---------------------------------------------------------------
 
 // doc: https://bulma.io/documentation/customize/variables/
@@ -47,6 +51,7 @@ $subtitle-color: $charcoal;
 @import "box";
 @import "color";
 @import "fontface";
+@import "footer";
 @import "hero";
 @import "navbar";
 
@@ -64,10 +69,6 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $family-do-hyeon
-}
-
-footer {
-  padding: 1% 5%;
 }
 
 p + p {
