@@ -17,16 +17,22 @@ An additional `.common/` subdirectory exists under `sites/`, exclusively contain
 ## development
 
 Before getting started, you will need:
-- [Git](https://git-scm.com/downloads) and [GNU Make](https://www.gnu.org/software/make/) (lil' obvious).
-- A recent versions of [Node.js](https://nodejs.org/en/download/).
+- [Git](https://git-scm.com/downloads) and [GNU Make](https://www.gnu.org/software/make/).
+- [Node.js](https://nodejs.org/en/download/) and [nvm](https://github.com/nvm-sh/nvm).
 
 First, to clone this repo, run:
 
-```git
+```sh
 git clone git@github.com:bonfirelink/websites.git
 ```
 
-Once cloned, to list all available sites, run:
+Once cloned, make sure you have the right version of `node` installed with `nvm`:
+
+```sh
+nvm use
+```
+
+You can now list all available sites running:
 
 ```sh
 make list
