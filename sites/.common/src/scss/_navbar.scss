@@ -6,6 +6,11 @@
 }
 
 .navbar-brand {
+  .navbar-item {
+    // align with the rest of `.navbar-item`
+    top: 0;
+  }
+
   // simulates `after-dot($fire)` from `.navbar-menu`
   .navbar-item:hover span {
     color: $fire;
@@ -31,4 +36,10 @@
   &, &:focus, &:focus-within, &:hover, &.is-active {
     color: $fire;
   }
+}
+
+// .navbar-item {
+.navbar-item {
+  // align with baseline of `.navbar-brand .navbar-item`
+  top: 3px;
 }
