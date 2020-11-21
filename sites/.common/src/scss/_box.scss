@@ -4,6 +4,10 @@
 $date-box-size: 5.5rem;
 $date-box-size-large: 6.5rem;
 
+.box.has-no-shadow {
+  box-shadow: none;
+}
+
 .box.is-date-box {
   display: flex;
   flex-direction: column;
@@ -11,6 +15,7 @@ $date-box-size-large: 6.5rem;
   justify-content: center;
 
   background: $charcoal;
+  box-shadow: none;
   color: white;
   font-family: $family-do-hyeon;
 
