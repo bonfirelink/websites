@@ -2,5 +2,11 @@
 @import "~bulma/bulma";
 
 video {
+  border-radius: $radius-large;
+  display: block;
   width: 100%;
+}
+
+.container.is-tv {
+  max-width: 60vw !important;
 }
