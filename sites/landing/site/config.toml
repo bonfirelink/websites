@@ -7,3 +7,11 @@ title = "bonfire.link"
 # See configuration options for more details:
 # https://gohugo.io/getting-started/configuration/#toml-configuration
 disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
+
+[menu]
+  [[menu.main]]
+    name = "NOTADAO"
+    url = "https://notadao.bonfire.link"
+  [[menu.main]]
+    name = "TV"
+    url = "https://tv.bonfire.link"
