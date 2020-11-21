@@ -1,8 +1,8 @@
 {{ define "main" }}
-<section class="hero is-fullheight-with-navbar has-footer-peek">
+<section class="hero is-fullheight-with-navbar has-footer-peek has-background-fire">
   <div class="hero-body">
-    <div class="container">
-      <video id="video" muted controls></video>
+    <div class="container is-tv">
+      <video id="video" class="mb-3" muted controls></video>
       <div class="field is-grouped">
         <div class="control is-expanded">
           <input id="beggar-addr" class="input" type="text" placeholder="Punch an Ethereum address...">
@@ -12,7 +12,7 @@
           </p>
         </div>
         <div class="control">
-          <button id="beg-button" class="button is-danger">beg</button>
+          <button id="beg-button" class="button is-danger is-inverted has-text-weight-bold">beg</button>
         </div>
       </div>
     </div>
