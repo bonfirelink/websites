@@ -1,9 +1,14 @@
-baseurl = "/"
+baseUrl = "/"
 languageCode = "en-us"
 languageLang = "en"
-title = "bonfire.link - not a dao"
+title = "bonfire.link NOTDAO — a governance experiment"
 
 # RSS, categories and tags disabled for an easy start
 # See configuration options for more details:
 # https://gohugo.io/getting-started/configuration/#toml-configuration
 disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
+
+[params]
+  isMainsite = false
+  mainsiteUrl = "https://bonfire.link"
+  subsiteName = "NOTADAO"
