@@ -13,3 +13,4 @@ disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
   mainsiteName = "bonfire.link"
   subsiteName = "NOTADAO"
   titleTagline = "a governance experiment."
+  notadaoUrl = "https://mainnet.aragon.org/#/notadao"
