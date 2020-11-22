@@ -1,5 +1,5 @@
 {{ define "title" }}
-  {{ .Title }} – {{ .CurrentSection.Title }} – {{ .Site.Title }}
+  {{ lower .Title }} | {{ .Site.Params.mainsiteName }} {{ lower .CurrentSection.Title }}
 {{ end }}
 {{ define "main" }}
   <section class="has-background-fire is-flex-grow-1">
