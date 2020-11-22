@@ -1,7 +1,6 @@
 baseUrl = "/"
 languageCode = "en-us"
 languageLang = "en"
-title = "bonfire.link NOTDAO — a governance experiment"
 
 # RSS, categories and tags disabled for an easy start
 # See configuration options for more details:
@@ -11,4 +10,6 @@ disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
 [params]
   isMainsite = false
   mainsiteUrl = "https://bonfire.link"
+  mainsiteName = "bonfire.link"
   subsiteName = "NOTADAO"
+  titleTagline = "a governance experiment."

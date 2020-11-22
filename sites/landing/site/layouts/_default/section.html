@@ -1,5 +1,5 @@
 {{ define "title" }}
-  {{ .Title }} – {{ .Site.Title }}
+  {{ .Site.Params.mainsiteName }} {{ lower .Title }}
 {{ end }}
 {{ define "main" }}
   {{ $img := .Resources.GetMatch "index.{jpg,png}" }}

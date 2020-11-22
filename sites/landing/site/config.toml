@@ -1,7 +1,6 @@
 baseUrl = "/"
 languageCode = "en-us"
 languageLang = "en"
-title = "bonfire.link"
 
 # RSS, categories and tags disabled for an easy start
 # See configuration options for more details:
@@ -10,6 +9,8 @@ disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
 
 [params]
   isMainsite = true
+  mainsiteName = "bonfire.link"
+  titleTagline = "assembling a decentralized tribe."
 
 [menu]
   [[menu.main]]
