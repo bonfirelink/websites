@@ -1,8 +1,8 @@
 {{ define "main" }}
 <section class="hero has-columns is-fullheight-with-navbar has-footer-peek">
   <div class="hero-body has-background-fire">
-    <div class="container is-size-5 is-italic">
-      <div class="columns is-variable is-6 is-vcentered is-centered has-text-centered has-text-white">
+    <div class="container">
+      <div class="columns is-variable is-6 is-vcentered is-centered has-text-centered is-size-5 is-italic has-text-white">
         <div class="column is-3">
           on the 6th month of the year<br/>
           on the 6th day of that month<br/>
@@ -24,8 +24,13 @@
           and in ether sin ablaze.
         </div>
       </div>
-      <div class="progress-container is-flex">
-        <progress id="progress" class="progress is-smallest is-danger" value="0"></progress>
+      <div class="progress-container is-flex is-flex-direction-column is-align-items-center">
+        <progress id="progress" class="progress is-smallest is-dark" value="100"></progress>
+        <div>
+          <a id="redirect" href="{{ .Site.Params.notadaoURL }}" class="has-text-weight-bold">
+            enter now
+          </a>
+        </div>
       </div>
     </div>
   </div>

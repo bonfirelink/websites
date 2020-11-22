@@ -9,3 +9,14 @@
   justify-content: space-evenly;
   margin: 5rem 5rem 0;
 }
+
+progress {
+  box-shadow: 0 7px 0 0 $charcoal;
+  transition-duration: 15s;  // watch out! it's used in index.js
+  transition-property: width;
+  transition-timing-function: linear;
+}
+
+a#redirect:hover {
+  color: white;
+}
