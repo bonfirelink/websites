@@ -2,6 +2,7 @@
 <html lang="{{ .Site.Language.Lang }}">
 
 <head>
+  {{ hugo.Generator }}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <base href="{{ if getenv "CONTEXT" }}{{ cond (eq "production" (getenv "CONTEXT")) (getenv "URL") (getenv "DEPLOY_PRIME_URL") }}{{ else }}{{ .Site.BaseURL }}{{ end }}">
@@ -12,23 +13,16 @@
       {{- with .Site.Params.titleTagline }} — {{ . }}{{ end }}
     {{- end -}}
   </title>
-
-  {{ $stylesheet := .Site.Data.webpack.main }}
-  {{ with $stylesheet.css }}
+  {{- with .Site.Data.webpack.main.css -}}
     <link href="{{ relURL . }}" rel="stylesheet">
-  {{ end }}
+  {{- end }}
 </head>
 
 <body class="has-navbar-fixed-top">
-
-  {{ block "header" . }}{{ partial "header" . }}{{end}}
-
-  {{ block "main" . }}{{end}}
-
-  {{ block "footer" . }}{{ partial "footer" . }}{{end}}
-
-  {{ $script := .Site.Data.webpack.main }}
-  {{ with $script.js }}
+  {{ block "header" . }}{{ partial "header" . }}{{ end }}
+  {{ block "main" . }}{{ end }}
+  {{ block "footer" . }}{{ partial "footer" . }}{{ end }}
+  {{ with .Site.Data.webpack.main.js }}
     <script src="{{ relURL . }}"></script>
   {{ end }}
 </body>
