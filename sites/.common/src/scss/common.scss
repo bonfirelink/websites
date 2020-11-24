@@ -35,7 +35,8 @@ $navbar-item-hover-background-color: 'transparent';
 
 // doc: https://bulma.io/documentation/elements/box/
 $box-padding: 2rem;
-$box-shadow: 10px 10px 0px 0px $charcoal;
+$box-shadow-size: 10px;
+$box-shadow: $box-shadow-size $box-shadow-size 0px 0px $charcoal;
 
 // doc: https://bulma.io/documentation/elements/title
 $title-family: $family-do-hyeon;
