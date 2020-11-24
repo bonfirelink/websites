@@ -83,6 +83,13 @@ p + p {
   font-family: $family-do-hyeon;
 }
 
+.is-width-auto {
+  width: auto !important;
+}
+
+.is-height-100p {
+  height: 100% !important;
+}
 
 // progress customizations
 // docs: https://bulma.io/documentation/elements/progress/

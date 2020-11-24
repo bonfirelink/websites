@@ -6,13 +6,22 @@
       {{ $mainsiteURL := cond .Site.Params.isMainsite .Site.BaseURL .Site.Params.mainsiteUrl  }}
       {{ $class := cond (and .Site.Params.isMainsite $isCurrentPageHome) "is-current-section" "" }}
       <a href="{{ $mainsiteURL }}" class="navbar-item {{ $class }}">
-        bonfire<span>.</span>link
+        bonfire<span id="dot">.</span>link
       </a>
       {{ with .Site.Params.subsiteName }}
         <a href="/" class="navbar-item is-current-section pl-0">{{.}}</a>
       {{ end }}
+      <div role="button" id="navbarBurger" class="navbar-burger is-width-auto" aria-label="menu" aria-expanded="false">
+        <!-- XXX: `.navbar-burger` will not be hidden with `.is-flex` -->
+        <div class="is-flex is-height-100p">
+          <a class="navbar-item">
+            <div class="more">MORE</div>
+            <div class="less has-text-fire">less</div>
+          </a>
+        </div>
+      </div>
     </div>
-    <div class="navbar-menu is-size-4 is-size-5-touch">
+    <div id="navbarMenu" class="navbar-menu is-size-4 is-size-5-touch">
       <div class="navbar-start">
         {{ $currentSection := .CurrentSection }}
         {{ range .Site.Sections }}
@@ -32,4 +41,17 @@
       </div>
     </div>
   </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const $navbarBurger = document.getElementById('navbarBurger');
+      $navbarBurger.addEventListener('click', () => {
+        const $navbarMenu = document.getElementById('navbarMenu');
+        const $dot = document.getElementById('dot');
+        $navbarBurger.classList.toggle('is-active');
+        $navbarMenu.classList.toggle('is-active');
+        $dot.classList.toggle('has-text-fire');
+        $navbarBurger.setAttribute("aria-expanded", !$navbarBurger.getAttribute("aria-expanded"));
+      });
+    });
+  </script>
 </nav>
