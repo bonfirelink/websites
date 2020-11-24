@@ -38,8 +38,59 @@
   }
 }
 
-// .navbar-item {
 .navbar-item {
   // align with baseline of `.navbar-brand .navbar-item`
   top: 3px;
+}
+
+// -- burger and active navbar-menu hacks --------------------------------------
+
+.navbar-burger {
+  &.is-active .more {
+    display: none;
+  }
+
+  &:not(.is-active) .less {
+    display: none;
+  }
+}
+
+// subtle decoration
+.navbar-burger {
+  .less:active {
+    color: $navbar-item-color;
+  }
+
+  .more:active {
+    color: $fire;
+  }
+}
+
+// expanded menu decoration
+.navbar-menu.is-active {
+  border-bottom: 0.2rem solid $fire;
+  box-shadow: 0 0.25rem 0 0 $charcoal;
+
+  .navbar-item {
+    // show dot not only when on hover
+    @include after-dot(0.4rem, $fire);
+
+    // XXX: prevent dot appearing far away
+    &:after {
+      position: static;
+      margin-left: -0.25rem;
+    }
+  }
+}
+
+// expanded menu alignment hacks
+.navbar-menu.is-active {
+  padding-top: 0;
+
+  // simulate being equidistant from `.navbar-brand`
+  .navbar-start .navbar-item:first-of-type {
+    padding-top: 0;
+    // XXX: compensate for `.navbar-brand .navbar-item` padding
+    margin-top: -0.2rem;
+  }
 }
