@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <base href="/">
-  <title>bonfire.link — assembling a decentralized tribe.</title><link href="/main.ee048.css" rel="stylesheet">
+  <title>bonfire.link — assembling a decentralized tribe.</title><link href="/main.64a40.css" rel="stylesheet">
 </head>
 
 <body class="has-navbar-fixed-top">
@@ -18,11 +18,24 @@
       
       
       <a href="/" class="navbar-item ">
-        bonfire<span>.</span>link
+        bonfire<span id="dot">.</span>link
       </a>
       
+      
+      
+      
+        <div role="button" id="navbarBurger" class="navbar-burger is-width-auto" aria-label="menu" aria-expanded="false">
+          
+          <div class="is-flex is-height-100p">
+            <a class="navbar-item">
+              <div class="more">MORE</div>
+              <div class="less has-text-fire">less</div>
+            </a>
+          </div>
+        </div>
+      
     </div>
-    <div class="navbar-menu is-size-4 is-size-5-touch">
+    <div id="navbarMenu" class="navbar-menu is-size-4 is-size-5-touch">
       <div class="navbar-start">
         
         
@@ -40,14 +53,29 @@
       </div>
     </div>
   </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const $navbarBurger = document.getElementById('navbarBurger');
+      $navbarBurger.addEventListener('click', () => {
+        const $navbarMenu = document.getElementById('navbarMenu');
+        const $dot = document.getElementById('dot');
+        $navbarBurger.classList.toggle('is-active');
+        $navbarMenu.classList.toggle('is-active');
+        $dot.classList.toggle('has-text-fire');
+        $navbarBurger.setAttribute("aria-expanded", !$navbarBurger.getAttribute("aria-expanded"));
+      });
+    });
+  </script>
 </nav>
 
   
-<section class="hero has-columns is-fullheight is-almost-fullheight">
-  <div class="container is-flex is-vcentered">
+<section class="hero is-fullheight is-almost-fullheight">
+  <div class="container is-flex is-align-items-center">
     <div>
       <img src="pipe.png" alt="" />
-      <h1 class="is-size-3 is-size-4-touch has-text-centered ">This is not a page</h1>
+      <h1 class="is-size-3 is-size-4-touch has-text-centered">
+        This is not a page
+      </h1>
     </div>
   </div>
 </section>
@@ -59,7 +87,7 @@
 </footer>
 
   
-    <script src="/main.ee048.js"></script>
+    <script src="/main.64a40.js"></script>
   
 </body>
 
