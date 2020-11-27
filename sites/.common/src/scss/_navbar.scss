@@ -88,7 +88,7 @@
   padding-top: 0;
 
   // simulate being equidistant from `.navbar-brand`
-  .navbar-start .navbar-item:first-of-type {
+  :first-child .navbar-item:first-of-type {
     padding-top: 0;
     // XXX: compensate for `.navbar-brand .navbar-item` padding
     margin-top: -0.2rem;

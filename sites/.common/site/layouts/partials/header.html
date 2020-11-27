@@ -26,23 +26,27 @@
       {{ end }}
     </div>
     <div id="navbarMenu" class="navbar-menu is-size-4 is-size-5-touch">
-      <div class="navbar-start">
-        {{ $currentSection := .CurrentSection }}
-        {{ range .Site.Sections }}
-          {{ $isCurrentSection := eq $currentSection.RelPermalink .RelPermalink }}
-          <a class="navbar-item {{- if $isCurrentSection }} is-current-section{{ end }}"
-             href="{{ .RelPermalink }}">
-            {{ .Title }}
-          </a>
-        {{ end }}
-      </div>
-      <div class="navbar-end">
-        {{ range .Site.Menus.main }}
-          <a class="navbar-item" href="{{ .URL }}">
-            {{ .Name }}
-          </a>
-        {{ end }}
-      </div>
+      {{ if .Site.Sections }}
+        <div class="navbar-start">
+          {{ $currentSection := .CurrentSection }}
+          {{ range .Site.Sections }}
+            {{ $isCurrentSection := eq $currentSection.RelPermalink .RelPermalink }}
+            <a class="navbar-item {{- if $isCurrentSection }} is-current-section{{ end }}"
+               href="{{ .RelPermalink }}">
+              {{ .Title }}
+            </a>
+          {{ end }}
+        </div>
+      {{ end }}
+      {{ if .Site.Menus.main }}
+        <div class="navbar-end">
+          {{ range .Site.Menus.main }}
+            <a class="navbar-item" href="{{ .URL }}">
+              {{ .Name }}
+            </a>
+          {{ end }}
+        </div>
+      {{ end }}
     </div>
   </div>
   <script>
