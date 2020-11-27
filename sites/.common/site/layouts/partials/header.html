@@ -11,15 +11,19 @@
       {{ with .Site.Params.subsiteName }}
         <a href="/" class="navbar-item is-current-section pl-0">{{.}}</a>
       {{ end }}
-      <div role="button" id="navbarBurger" class="navbar-burger is-width-auto" aria-label="menu" aria-expanded="false">
-        <!-- XXX: `.navbar-burger` will not be hidden with `.is-flex` -->
-        <div class="is-flex is-height-100p">
-          <a class="navbar-item">
-            <div class="more">MORE</div>
-            <div class="less has-text-fire">less</div>
-          </a>
+      <!-- display navbar burger only when there are sections or menus -->
+      {{ $hasNavbarBurger := gt (add (len .Site.Sections) (len .Site.Menus)) 0 }}
+      {{ if $hasNavbarBurger }}
+        <div role="button" id="navbarBurger" class="navbar-burger is-width-auto" aria-label="menu" aria-expanded="false">
+          <!-- XXX: `.navbar-burger` will not be hidden with `.is-flex` -->
+          <div class="is-flex is-height-100p">
+            <a class="navbar-item">
+              <div class="more">MORE</div>
+              <div class="less has-text-fire">less</div>
+            </a>
+          </div>
         </div>
-      </div>
+      {{ end }}
     </div>
     <div id="navbarMenu" class="navbar-menu is-size-4 is-size-5-touch">
       <div class="navbar-start">
