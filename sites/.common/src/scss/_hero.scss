@@ -3,9 +3,6 @@
 
 .hero.is-fullheight,
 .hero.is-fullheight-with-navbar {
-  // graceful fallback in case the content is higher than hero
-  overflow-y: scroll;
-
   &.has-footer-peek,
   &.is-almost-fullheight {
     min-height: calc(100vh - #{$navbar-height} - #{$fh-hero-peek-height});
