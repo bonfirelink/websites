@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <base href="/">
-  <title>bonfire.link TV — not propaganda.</title><link href="/main.9ffae.css" rel="stylesheet">
+  <title>bonfire.link TV — not propaganda.</title><link href="/main.ff4fb.css" rel="stylesheet">
 </head>
 
 <body class="has-navbar-fixed-top">
@@ -18,13 +18,16 @@
       
       
       <a href="https://bonfire.link" class="navbar-item ">
-        bonfire<span>.</span>link
+        bonfire<span id="dot">.</span>link
       </a>
       
         <a href="/" class="navbar-item is-current-section pl-0">TV</a>
       
+      
+      
+      
     </div>
-    <div class="navbar-menu is-size-4 is-size-5-touch">
+    <div id="navbarMenu" class="navbar-menu is-size-4 is-size-5-touch">
       <div class="navbar-start">
         
         
@@ -34,6 +37,19 @@
       </div>
     </div>
   </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const $navbarBurger = document.getElementById('navbarBurger');
+      $navbarBurger.addEventListener('click', () => {
+        const $navbarMenu = document.getElementById('navbarMenu');
+        const $dot = document.getElementById('dot');
+        $navbarBurger.classList.toggle('is-active');
+        $navbarMenu.classList.toggle('is-active');
+        $dot.classList.toggle('has-text-fire');
+        $navbarBurger.setAttribute("aria-expanded", !$navbarBurger.getAttribute("aria-expanded"));
+      });
+    });
+  </script>
 </nav>
 
   
@@ -114,7 +130,7 @@
 </footer>
 
   
-    <script src="/main.9ffae.js"></script>
+    <script src="/main.ff4fb.js"></script>
   
 </body>
 
