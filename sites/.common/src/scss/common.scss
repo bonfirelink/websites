@@ -66,6 +66,14 @@ html, body {
   height: 100%;
 }
 
+body {
+  // `min-height` in a `flex` container: https://stackoverflow.com/a/45905131/1901977
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 100%;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: $family-do-hyeon
 }
