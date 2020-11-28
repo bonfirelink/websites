@@ -13,18 +13,18 @@
               </a>
               <div class="is-flex-grow-1 contains-section-list-item">
                 <div class="box">
-                  <h1 class="title is-lowercase is-2">
+                  <h1 class="title is-lowercase is-2 is-size-4-mobile">
                     <!-- TODO: check size in touch device -->
                     <a href="{{ .RelPermalink }}" class="has-text-fire">
                        {{ .Title }}
                     </a>
                   </h1>
                   {{ if .Params.subtitle }}
-                    <h2 class="subtitle mb-4">
+                    <h2 class="subtitle mb-4 is-size-5-mobile">
                       {{ .Params.subtitle }}
                     </h2>
                   {{ end }}
-                  <article class="article">
+                  <article class="article is-size-7-mobile">
                     {{ .Content }}
                   </article>
                 </div>
