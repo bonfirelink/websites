@@ -3,35 +3,37 @@
 {{ end }}
 {{ define "main" }}
   <section class="has-background-fire is-flex-grow-1">
-    <div class="container">
-      <div class="columns has-no-vmargin mt-3 mb-3">
-        <main class="column">
-          <div class="block is-flex">
-            <a href="{{ .RelPermalink }}" class="mr-2rem">
-              {{ partial "date-box" (dict "date" .Params.date "classes" "is-large") }}
-            </a>
-            <div class="is-flex-grow-1 contains-section-list-item">
-              <div class="box">
-                <h1 class="title is-lowercase is-2">
-                  <!-- TODO: check size in touch device -->
-                  <a href="{{ .RelPermalink }}" class="has-text-fire">
-                     {{ .Title }}
-                  </a>
-                </h1>
-                {{ if .Params.subtitle }}
-                  <h2 class="subtitle">
-                    {{ .Params.subtitle }}
-                  </h2>
-                {{ end }}
-                <article class="article">
-                  {{ .Content }}
-                </article>
+    <div class="section-body">
+      <div class="container">
+        <div class="columns mx-0 my-5">
+          <div class="column py-0">
+            <div class="block is-flex">
+              <a href="{{ .RelPermalink }}" class="is-hidden-mobile mr-2rem">
+                {{ partial "date-box" (dict "date" .Params.date "classes" "is-large") }}
+              </a>
+              <div class="is-flex-grow-1 contains-section-list-item">
+                <div class="box">
+                  <h1 class="title is-lowercase is-2">
+                    <!-- TODO: check size in touch device -->
+                    <a href="{{ .RelPermalink }}" class="has-text-fire">
+                       {{ .Title }}
+                    </a>
+                  </h1>
+                  {{ if .Params.subtitle }}
+                    <h2 class="subtitle mb-4">
+                      {{ .Params.subtitle }}
+                    </h2>
+                  {{ end }}
+                  <article class="article">
+                    {{ .Content }}
+                  </article>
+                </div>
               </div>
             </div>
           </div>
-        </main>
-        <div class="column is-one-fifth">
-          <!-- TODO: to fill with something when it makes sense -->
+          <div class="column is-one-fifth is-hidden-mobile">
+            <!-- TODO: to fill with something when it makes sense -->
+          </div>
         </div>
       </div>
     </div>

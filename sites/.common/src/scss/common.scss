@@ -38,11 +38,30 @@ $box-padding: 2rem;
 $box-shadow-size: 10px;
 $box-shadow: $box-shadow-size $box-shadow-size 0px 0px $charcoal;
 
+// https://bulma.io/documentation/layout/hero/
+$hero-body-padding: 3rem 0.75rem;
+
 // doc: https://bulma.io/documentation/elements/title
 $title-family: $family-do-hyeon;
 $title-color: $fire;
 $title-weight: 400;
 $subtitle-color: $charcoal;
+
+// -- FIXME: bulma initial variables -------------------------------------------
+//    pre-definition of bulma initial variables and mixins so that they can be
+//    used in partials.  bulma is currently imported from after common.scss and
+//    its variables are not yet available here.  remove this section once bulma
+//    can be imported before partials.
+
+// doc: https://github.com/jgthms/bulma/blob/master/sass/utilities/initial-variables.sass
+$tablet: 769px !default;
+
+// source: https://github.com/jgthms/bulma/blob/master/sass/utilities/mixins.sass#L81-L83
+@mixin mobile {
+  @media screen and (max-width: $tablet - 1px) {
+    @content;
+  }
+}
 
 // -- mixins -------------------------------------------------------------------
 
@@ -94,16 +113,35 @@ p + p {
   height: 100% !important;
 }
 
+// apply safe are on screens with notch
+.container {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
 // progress customizations
 // docs: https://bulma.io/documentation/elements/progress/
 .progress.is-smallest {
   height: 0.25rem;
 }
 
-.columns.has-no-vmargin {
-  margin-top: 0;
+// remove default negative margins and simulate behavior by removing paddings
+// https://github.com/jgthms/bulma/issues/766#issuecomment-305248614
+.columns.mx-0 {
+  .column:first-of-type {
+    padding-left: 0;
+  }
 
-  &:last-child {
-    margin-bottom: 0;
+  .column:last-of-type {
+    padding-right: 0;
+  }
+}
+
+// -- spacing utils ------------------------------------------------------------
+
+@include mobile {
+  .py-5-mobile {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
   }
 }

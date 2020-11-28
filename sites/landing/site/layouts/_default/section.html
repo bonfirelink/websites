@@ -10,7 +10,7 @@
   <section class="hero has-media-background"
            style="background-image: url('{{ $background_image }}');
                   background-position: 0% {{ .Page.Params.heroBackgroundVpos }};">
-    <div class="hero-body">
+    <div class="hero-body py-5-mobile">
       <div class="container">
         <h1 class="title">
           {{ .Title }}.
@@ -22,37 +22,39 @@
     </div>
   </section>
   <section class="has-background-fire is-flex-grow-1">
-    <div class="container">
-      <div class="columns has-no-vmargin mt-4 mb-3">
-        <main class="column">
-          <ul>
-            {{ range .Paginator.Pages }}
-              <li class="block is-flex">
-                <a href="{{ .RelPermalink }}" class="mr-3 contains-date-box">
-                  {{ partial "date-box" (dict "date" .Params.date) }}
-                </a>
-                <div class="is-flex-grow-1 contains-section-list-item">
-                  <div class="box is-list-item">
-                    <h3>
-                      <!-- TODO: check size in touch device -->
-                      <a href="{{ .RelPermalink }}" class="title is-lowercase is-4">
-                         {{ .Title }}
-                      </a>
-                    </h3>
-                    {{ .Params.summary }}
+    <div class="section-body">
+      <div class="container">
+        <div class="columns mx-0 my-5">
+          <div class="column py-0">
+            <ul>
+              {{ range .Paginator.Pages }}
+                <li class="block is-flex">
+                  <a href="{{ .RelPermalink }}" class="mr-3 contains-date-box">
+                    {{ partial "date-box" (dict "date" .Params.date) }}
+                  </a>
+                  <div class="is-flex-grow-1 contains-section-list-item">
+                    <div class="box is-list-item p-4-mobile">
+                      <h3>
+                        <!-- TODO: check size in touch device -->
+                        <a href="{{ .RelPermalink }}" class="title is-lowercase is-4">
+                           {{ .Title }}
+                        </a>
+                      </h3>
+                      {{ .Params.summary }}
+                    </div>
                   </div>
-                </div>
-              </li>
-            {{ end }}
-          </ul>
-        </main>
-        <div class="column is-one-fifth">
-          <aside class="block has-text-white">
-            <h3 class="is-size-4 is-size-5-touch">
-              {{ .Title }}?
-            </h3>
-            {{ .Content }}
-          </aside>
+                </li>
+              {{ end }}
+            </ul>
+          </div>
+          <div class="column is-one-fifth is-hidden-mobile">
+            <aside class="block has-text-white">
+              <h3 class="is-size-4 is-size-5-touch">
+                {{ .Title }}?
+              </h3>
+              {{ .Content }}
+            </aside>
+          </div>
         </div>
       </div>
     </div>
