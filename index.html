@@ -6,13 +6,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <base href="/">
-  <title>bonfire.link TV — not propaganda.</title><link href="/main.ff4fb.css" rel="stylesheet">
+  <title>bonfire.link TV — not propaganda.</title><link href="/main.9a722.css" rel="stylesheet">
 </head>
 
 <body class="has-navbar-fixed-top">
   
 
-<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+<nav id="navbar" class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
   <div class="container">
     <div class="navbar-brand is-size-3 is-size-4-touch">
       
@@ -28,21 +28,18 @@
       
     </div>
     <div id="navbarMenu" class="navbar-menu is-size-4 is-size-5-touch">
-      <div class="navbar-start">
-        
-        
-      </div>
-      <div class="navbar-end">
-        
-      </div>
+      
+      
     </div>
   </div>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      const $navbar = document.getElementById('navbar');
       const $navbarBurger = document.getElementById('navbarBurger');
       $navbarBurger.addEventListener('click', () => {
         const $navbarMenu = document.getElementById('navbarMenu');
         const $dot = document.getElementById('dot');
+        $navbar.classList.toggle('is-active');
         $navbarBurger.classList.toggle('is-active');
         $navbarMenu.classList.toggle('is-active');
         $dot.classList.toggle('has-text-fire');
@@ -130,7 +127,7 @@
 </footer>
 
   
-    <script src="/main.ff4fb.js"></script>
+    <script src="/main.9a722.js"></script>
   
 </body>
 
