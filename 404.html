@@ -6,13 +6,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <base href="/">
-  <title>bonfire.link — assembling a decentralized tribe.</title><link href="/main.64a40.css" rel="stylesheet">
+  <title>bonfire.link — assembling a decentralized tribe.</title><link href="/main.172de.css" rel="stylesheet">
 </head>
 
 <body class="has-navbar-fixed-top">
   
 
-<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+<nav id="navbar" class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
   <div class="container">
     <div class="navbar-brand is-size-3 is-size-4-touch">
       
@@ -36,29 +36,30 @@
       
     </div>
     <div id="navbarMenu" class="navbar-menu is-size-4 is-size-5-touch">
-      <div class="navbar-start">
-        
-        
-      </div>
-      <div class="navbar-end">
-        
-          <a class="navbar-item" href="https://notadao.bonfire.link">
-            NOTADAO
-          </a>
-        
-          <a class="navbar-item" href="https://tv.bonfire.link">
-            TV
-          </a>
-        
-      </div>
+      
+      
+        <div class="navbar-end">
+          
+            <a class="navbar-item" href="https://notadao.bonfire.link">
+              NOTADAO
+            </a>
+          
+            <a class="navbar-item" href="https://tv.bonfire.link">
+              TV
+            </a>
+          
+        </div>
+      
     </div>
   </div>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      const $navbar = document.getElementById('navbar');
       const $navbarBurger = document.getElementById('navbarBurger');
       $navbarBurger.addEventListener('click', () => {
         const $navbarMenu = document.getElementById('navbarMenu');
         const $dot = document.getElementById('dot');
+        $navbar.classList.toggle('is-active');
         $navbarBurger.classList.toggle('is-active');
         $navbarMenu.classList.toggle('is-active');
         $dot.classList.toggle('has-text-fire');
@@ -87,7 +88,7 @@
 </footer>
 
   
-    <script src="/main.64a40.js"></script>
+    <script src="/main.172de.js"></script>
   
 </body>
 
