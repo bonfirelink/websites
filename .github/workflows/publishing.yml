@@ -23,7 +23,9 @@ jobs:
           path: sites/${{ matrix.site }}/node_modules
           # XXX: Cache will be invalidated any time that any site updates its packages
           #      It's not ideal, but I haven't found any way to interpolate `${{ matrix.site }}` in `hashFiles(...)`
-          key: ${{ runner.os }}-npm-${{ matrix.site }}-${{ hashFiles('sites/**/package-lock.json') }}
+          # FIXME: "Cache not found" but "Cache already exists"
+          #        https://github.com/actions/cache/issues/144
+          key: ${{ runner.os }}-npm-${{ matrix.site }}-${{ hashFiles('sites/**/package-lock.json') }}-wtf
       - uses: actions/setup-node@v1
         if: steps.cache.outputs.cache-hit != 'true'
         with:
