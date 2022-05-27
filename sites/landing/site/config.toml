@@ -14,6 +14,9 @@ disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
 
 [menu]
   [[menu.main]]
+    name = "SOLSTICE"
+    url = "http://solstice.bonfire.link"
+  [[menu.main]]
     name = "INTERSECT"
     url = "https://intersect.bonfire.link"
   [[menu.main]]
